@@ -103,9 +103,6 @@ glimpse(Fifa_21)
 
     -   In addition, we predict that samples coming from populations of higher wealth, higher levels of education on HIV, and younger populations will have lower proportions of negativity; and that over time levels of negativity have decreased as HIV has become less stigmatized.
 
-```{=html}
-<!-- -->
-```
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
     -   Sex, Wealth Quintile, Education, and Residence are all Categorical variables.
