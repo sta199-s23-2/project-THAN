@@ -18,32 +18,57 @@ library(tidyverse)
 
 -   Identify the source of the data.
 
+This data set is called FIFA 2021 Complete Player Dataset from Aayush Mishra on fifaindex.com.
+
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
+The data set was originally collected 3 years ago. This data is from the source fifaindex.com by the use of scraping and chrome extensions.
+
 -   Write a brief description of the observations.
+
+Each observation is a soccer player from the video game FIFA 2021, and the data includes this individual player's name, nationality, position, overall rating, age, hits, potential, and team.
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
+How does a player\'s nationality and club team, correlate to their current rating and potential?
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
+
+I find it very intriguing to explore how a player's nationality and club team affects their current rating and potential. For example, do some teams have player's with low ratings but a very high potential rating in the future, and do some teams primarily have players with no potential room to grow? Also do certain countries have higher rated players than other countries, or do they have players with a larger amount of potential to improve? I hypothesize that the largest teams like Real Madrid or Barcelona will have players with a higher rating but no significantly greater potential growth. While smaller teams with a developmental academy like Ajax or Lisbon will have players with a lower rating but a higher level of potential growth.
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+Nationality: Categorical
+
+Club team: Categorical
+
+Rating: Quantitative
+
+Potential: Quantitative
+
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
+https://fifacareermodetips.com/guides/understanding-potential/
+
 -   Provide a one paragraph summary about the article.
 
+The article "Understanding Potential" from FIFA Career Mode Tips provides an overview of player potential in FIFA. The article explains the concept of potential as a measure of a player's maximum possible rating in the future, based on their current attributes and age. The article also covers the different types of potential ratings and how they are calculated, including fixed potential, range potential, and dynamic potential.
+
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+
+The article gives me a better understanding of my research question as I learned to think of potential as a player's predicted or peak overall rating. This provided me the awesome idea of creating a stacked bar plot of extra potential over current rating to show the range certain players can grow and make a beneficial visualization. The article also provides examinations of examples of certain player's potential which gives me a better understanding of how I could use this in my project.
 
 ## Glimpse of data
 
 ```{r}
 #| label: load-data-1
 
-# add code here
+Fifa_21 <- read.csv(file = 'data/FIFA-NEW.csv', header = T)
+glimpse(Fifa_21)
 ```
 
 # Data 2
@@ -64,7 +89,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
@@ -98,7 +123,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
