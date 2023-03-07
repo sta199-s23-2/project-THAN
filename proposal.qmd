@@ -30,7 +30,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
@@ -50,34 +50,69 @@ library(tidyverse)
 
 ## Introduction and data
 
--   Identify the source of the data.
+-   Identify the source of the data
+
+    -   The dataset "Proportion of people expressing discriminatory attitudes towards people living with HIV, 2014-2021" is sourced from UNICEF DATA.
+
+    -   https://data.unicef.org/resources/dataset/hiv-aids-statistical-tables/
 
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
+    -   Data was originally collected by unicef from the year 2000 to 2022 through nationally representative population-based surveys.
+
 -   Write a brief description of the observations.
+
+    -   Each observation includes the percentage of people expressing discriminatory attitudes toward people living with HIV. These observations are broken down by the country, global region, and year that the observation data was collected in, along with observations based on certain age groups, sexes, and socioeconomic status.
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
+    -   Worldwide, are there regional differences for the proportion of individuals with discriminatory attitudes towards those living with HIV, how does socioeconomic/residential status impact the attitudes individuals hold towards those with HIV, and how has this changed over time?
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
+    -   This research would look at how different factors of life, from age to sex, wealth to the region an individual lives in influences the attitude one has towards those with HIV.
+
+    -   We hypothesize that each region will have a different average of negative opinion, based on the culture of the region.
+
+    -   In addition, we predict that samples coming from populations of higher wealth, higher levels of education on HIV, and younger populations will have lower proportions of negativity; and that over time levels of negativity have decreased as HIV has become less stigmatized.
+
+```{=html}
+<!-- -->
+```
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+    -   Sex, Wealth Quintile, Education, and Residence are all Categorical variables.
+
+    -   The proportion of individuals with discriminatory attitudes towards people with HIV is a Quantitative variable.
+
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
+    -   article: Discriminatory attitudes towards people living with HIV declining in some regions, rebounding in others
+
+    -   link: https://www.unaids.org/en/resources/presscentre/featurestories/2021/january/20210125_discriminatory-attitudes
+
+    -   from: The Joint United Nations Programme on HIV/AIDS
+
 -   Provide a one paragraph summary about the article.
 
+    -   Among 151 countries contributing to UNAIDS study on discriminatory attitudes towards those with HIV, UNAIDS is observing great strides in East and South Africa towards destigmatizing HIV. While this may be the case in this region, other regions still criminalize HIV exposure and transmission, inhibiting the control of the epidemic and further stigmatizing the disease. In the most recent set of data, over 50% of reporting countries returned data that showed the majority of their younger (15-49 y/o) population still holds discriminatory attitudes towards those with AIDS.
+
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+
+    -   My research question aims to look at the regions with high and low rates of discriminatory attitudes and see if, regardless of current levels, globally these trends are decreasing. UNAIDS does not look at the impact of socioeconomic status, age, sex, or education about AIDS in how they categorize their data. I hope that by looking at these factors we can better understand where negative attitudes are originating so as to determine where education would be most necessary and effective in destigmatizing HIV.
 
 ## Glimpse of data
 
 ```{r}
 #| label: load-data-2
 
-# add code here
+HIV_data <- read.csv("data/HIV_Discrimination_2022.csv", header = TRUE)
+
+glimpse(HIV_data)
 ```
 
 # Data 3
@@ -98,7 +133,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
