@@ -218,31 +218,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="introduction-and-data" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-and-data">Introduction and data</h2>
 <ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
+<li>Identify the source of the data.</li>
 </ul>
+<p>This data set is called FIFA 2021 Complete Player Dataset from Aayush Mishra on fifaindex.com.</p>
+<ul>
+<li>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</li>
+</ul>
+<p>The data set was originally collected 3 years ago. This data is from the source fifaindex.com by the use of scraping and chrome extensions.</p>
+<ul>
+<li>Write a brief description of the observations.</li>
+</ul>
+<p>Each observation is a soccer player from the video game FIFA 2021, and the data includes this individual player’s name, nationality, position, overall rating, age, hits, potential, and team.</p>
 </section>
 <section id="research-question" class="level2">
 <h2 class="anchored" data-anchor-id="research-question">Research question</h2>
 <ul>
+<<<<<<< HEAD
 <li><p>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</p></li>
 <li><p>A description of the research topic along with a concise statement of your hypotheses on this topic.</p></li>
 <li><p>Identify the types of variables in your research question. Categorical? Quantitative?</p></li>
+=======
+<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
 </ul>
+<p>How does a player's nationality and club team, correlate to their current rating and potential?</p>
+<ul>
+<li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
+</ul>
+<p>I find it very intriguing to explore how a player’s nationality and club team affects their current rating and potential. For example, do some teams have player’s with low ratings but a very high potential rating in the future, and do some teams primarily have players with no potential room to grow? Also do certain countries have higher rated players than other countries, or do they have players with a larger amount of potential to improve? I hypothesize that the largest teams like Real Madrid or Barcelona will have players with a higher rating but no significantly greater potential growth. While smaller teams with a developmental academy like Ajax or Lisbon will have players with a lower rating but a higher level of potential growth.</p>
+<ul>
+<li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
+>>>>>>> b8b0feeef38d94cd76d59379b6b90718d786fbe6
+</ul>
+<p>Nationality: Categorical</p>
+<p>Club team: Categorical</p>
+<p>Rating: Quantitative</p>
+<p>Potential: Quantitative</p>
 </section>
 <section id="literature" class="level2">
 <h2 class="anchored" data-anchor-id="literature">Literature</h2>
 <ul>
-<li><p>Find one published credible article on the topic you are interested in researching.</p></li>
-<li><p>Provide a one paragraph summary about the article.</p></li>
-<li><p>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</p></li>
+<li>Find one published credible article on the topic you are interested in researching.</li>
 </ul>
+<p>https://fifacareermodetips.com/guides/understanding-potential/</p>
+<ul>
+<li>Provide a one paragraph summary about the article.</li>
+</ul>
+<p>The article “Understanding Potential” from FIFA Career Mode Tips provides an overview of player potential in FIFA. The article explains the concept of potential as a measure of a player’s maximum possible rating in the future, based on their current attributes and age. The article also covers the different types of potential ratings and how they are calculated, including fixed potential, range potential, and dynamic potential.</p>
+<ul>
+<li>In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.</li>
+</ul>
+<p>The article gives me a better understanding of my research question as I learned to think of potential as a player’s predicted or peak overall rating. This provided me the awesome idea of creating a stacked bar plot of extra potential over current rating to show the range certain players can grow and make a beneficial visualization. The article also provides examinations of examples of certain player’s potential which gives me a better understanding of how I could use this in my project.</p>
 </section>
 <section id="glimpse-of-data" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data">Glimpse of data</h2>
 <div class="cell">
+<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Fifa_21 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">'data/FIFA-NEW.csv'</span>, <span class="at">header =</span> T)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(Fifa_21)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 6,124
+Columns: 10
+$ X           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
+$ player_id   &lt;int&gt; 158023, 20801, 190871, 203376, 200389, 192985, 188545, 183…
+$ name        &lt;chr&gt; "Lionel Messi", "Cristiano Ronaldo", "Neymar Jr", "Virgil …
+$ nationality &lt;chr&gt; "Argentina", "Portugal", "Brazil", "Netherlands", "Sloveni…
+$ position    &lt;chr&gt; "ST|CF|RW", "ST|LW", "CAM|LW", "CB", "GK", "CM|CAM", "ST",…
+$ overall     &lt;int&gt; 94, 93, 92, 91, 91, 91, 91, 91, 90, 90, 90, 90, 90, 89, 79…
+$ age         &lt;int&gt; 33, 35, 28, 29, 27, 29, 31, 29, 27, 28, 28, 28, 32, 21, 25…
+$ hits        &lt;int&gt; 299, 276, 186, 127, 47, 119, 89, 66, 53, 94, 76, 68, 50, 2…
+$ potential   &lt;int&gt; 94, 93, 92, 92, 93, 91, 91, 91, 91, 90, 90, 93, 90, 95, 83…
+$ team        &lt;chr&gt; "FC Barcelona ", "Juventus ", "Paris Saint-Germain ", "Liv…</code></pre>
+</div>
+>>>>>>> b8b0feeef38d94cd76d59379b6b90718d786fbe6
 </div>
 </section>
 </section>
@@ -269,6 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="research-question-1" class="level2">
 <h2 class="anchored" data-anchor-id="research-question-1">Research question</h2>
 <ul>
+<<<<<<< HEAD
 <li><p>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</p>
 <ul>
 <li>Worldwide, are there regional differences for the proportion of individuals with discriminatory attitudes towards those living with HIV, how does socioeconomic/residential status impact the attitudes individuals hold towards those with HIV, and how has this changed over time?</li>
@@ -287,6 +337,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Sex, Wealth Quintile, Education, and Residence are all Categorical variables.</p></li>
 <li><p>The proportion of individuals with discriminatory attitudes towards people with HIV is a Quantitative variable.</p></li>
 </ul></li>
+=======
+<li><p>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</p></li>
+<li><p>A description of the research topic along with a concise statement of your hypotheses on this topic.</p></li>
+<li><p>Identify the types of variables in your research question. Categorical? Quantitative?</p></li>
+>>>>>>> b8b0feeef38d94cd76d59379b6b90718d786fbe6
 </ul>
 </section>
 <section id="literature-1" class="level2">
@@ -311,6 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="glimpse-of-data-1" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data-1">Glimpse of data</h2>
 <div class="cell">
+<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>HIV_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/HIV_Discrimination_2022.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(HIV_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -329,6 +385,9 @@ $ DISAGG_CATEGORY &lt;chr&gt; "Age", "Education", "Education", "Education", "Edu
 $ DISAGG          &lt;chr&gt; "15-19", "higher secondary+", "pre-primary or none", "…
 $ Value           &lt;dbl&gt; 42.6, 28.9, 56.3, 56.8, 48.0, 44.0, 34.5, 52.7, 47.5, …</code></pre>
 </div>
+=======
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> b8b0feeef38d94cd76d59379b6b90718d786fbe6
 </div>
 </section>
 </section>

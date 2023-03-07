@@ -25,28 +25,28 @@
     "href": "proposal.html#introduction-and-data",
     "title": "Project title",
     "section": "Introduction and data",
-    "text": "Introduction and data\n\nIdentify the source of the data.\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\nWrite a brief description of the observations."
+    "text": "Introduction and data\n\nIdentify the source of the data.\n\nThis data set is called FIFA 2021 Complete Player Dataset from Aayush Mishra on fifaindex.com.\n\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\n\nThe data set was originally collected 3 years ago. This data is from the source fifaindex.com by the use of scraping and chrome extensions.\n\nWrite a brief description of the observations.\n\nEach observation is a soccer player from the video game FIFA 2021, and the data includes this individual player’s name, nationality, position, overall rating, age, hits, potential, and team."
   },
   {
     "objectID": "proposal.html#research-question",
     "href": "proposal.html#research-question",
     "title": "Project title",
     "section": "Research question",
-    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\nA description of the research topic along with a concise statement of your hypotheses on this topic.\nIdentify the types of variables in your research question. Categorical? Quantitative?"
+    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\n\nHow does a player's nationality and club team, correlate to their current rating and potential?\n\nA description of the research topic along with a concise statement of your hypotheses on this topic.\n\nI find it very intriguing to explore how a player’s nationality and club team affects their current rating and potential. For example, do some teams have player’s with low ratings but a very high potential rating in the future, and do some teams primarily have players with no potential room to grow? Also do certain countries have higher rated players than other countries, or do they have players with a larger amount of potential to improve? I hypothesize that the largest teams like Real Madrid or Barcelona will have players with a higher rating but no significantly greater potential growth. While smaller teams with a developmental academy like Ajax or Lisbon will have players with a lower rating but a higher level of potential growth.\n\nIdentify the types of variables in your research question. Categorical? Quantitative?\n\nNationality: Categorical\nClub team: Categorical\nRating: Quantitative\nPotential: Quantitative"
   },
   {
     "objectID": "proposal.html#literature",
     "href": "proposal.html#literature",
     "title": "Project title",
     "section": "Literature",
-    "text": "Literature\n\nFind one published credible article on the topic you are interested in researching.\nProvide a one paragraph summary about the article.\nIn 1-2 sentences, explain how your research question builds on / is different than the article you have cited."
+    "text": "Literature\n\nFind one published credible article on the topic you are interested in researching.\n\nhttps://fifacareermodetips.com/guides/understanding-potential/\n\nProvide a one paragraph summary about the article.\n\nThe article “Understanding Potential” from FIFA Career Mode Tips provides an overview of player potential in FIFA. The article explains the concept of potential as a measure of a player’s maximum possible rating in the future, based on their current attributes and age. The article also covers the different types of potential ratings and how they are calculated, including fixed potential, range potential, and dynamic potential.\n\nIn 1-2 sentences, explain how your research question builds on / is different than the article you have cited.\n\nThe article gives me a better understanding of my research question as I learned to think of potential as a player’s predicted or peak overall rating. This provided me the awesome idea of creating a stacked bar plot of extra potential over current rating to show the range certain players can grow and make a beneficial visualization. The article also provides examinations of examples of certain player’s potential which gives me a better understanding of how I could use this in my project."
   },
   {
     "objectID": "proposal.html#glimpse-of-data",
     "href": "proposal.html#glimpse-of-data",
     "title": "Project title",
     "section": "Glimpse of data",
-    "text": "Glimpse of data\n\n# add code here"
+    "text": "Glimpse of data\n\nFifa_21 <- read.csv(file = 'data/FIFA-NEW.csv', header = T)\nglimpse(Fifa_21)\n\nRows: 6,124\nColumns: 10\n$ X           <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…\n$ player_id   <int> 158023, 20801, 190871, 203376, 200389, 192985, 188545, 183…\n$ name        <chr> \"Lionel Messi\", \"Cristiano Ronaldo\", \"Neymar Jr\", \"Virgil …\n$ nationality <chr> \"Argentina\", \"Portugal\", \"Brazil\", \"Netherlands\", \"Sloveni…\n$ position    <chr> \"ST|CF|RW\", \"ST|LW\", \"CAM|LW\", \"CB\", \"GK\", \"CM|CAM\", \"ST\",…\n$ overall     <int> 94, 93, 92, 91, 91, 91, 91, 91, 90, 90, 90, 90, 90, 89, 79…\n$ age         <int> 33, 35, 28, 29, 27, 29, 31, 29, 27, 28, 28, 28, 32, 21, 25…\n$ hits        <int> 299, 276, 186, 127, 47, 119, 89, 66, 53, 94, 76, 68, 50, 2…\n$ potential   <int> 94, 93, 92, 92, 93, 91, 91, 91, 91, 90, 90, 93, 90, 95, 83…\n$ team        <chr> \"FC Barcelona \", \"Juventus \", \"Paris Saint-Germain \", \"Liv…"
   },
   {
     "objectID": "proposal.html#introduction-and-data-1",
