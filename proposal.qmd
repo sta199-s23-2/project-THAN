@@ -30,7 +30,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
@@ -64,7 +64,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
@@ -86,30 +86,48 @@ library(tidyverse)
 
 -   Identify the source of the data.
 
+    **This data comes from the Tidy Tuesday repositories on GitHub via the site "Data is Plural."**
+
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
+    **It comes from Lynn Fisher who collected data from upwards of 630 movies, calculating the difference between the love interests' ages. This was collected/published around February 7th, 2018.**
+
 -   Write a brief description of the observations.
+
+    **The observations are fairly simple to follow. They list the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters' names, their birth dates, and then their ages.**
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
+    **Does the age difference of actors in movies decrease as the release date becomes more modern?**
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
+
+    **This would explore the culture of Hollywood, especially as it tended to have a history of huge power dynamics among older males and younger females. For this question's significance on the male/female power dynamic in Hollywood, it would make more sense to only view the couples with a male and a female, although there are LGBTQ+ couple representations present in the data set. Based on intuition, I would believe that, generally, the age gap lessens as the movies become newer.**
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+    **The variables are quantitative for the age gap and categorical for the gender.**
+
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
+    **https://www.theguardian.com/film/2022/feb/06/move-over-silver-foxes-hollywood-gets-to-grips-with-the-age-gap**
+
 -   Provide a one paragraph summary about the article.
 
+    **The article starts off by addressing the issue of casting older males with younger females and how it has been prevalent for so long in Hollywood, but is slowly facing more criticism and opposition. Filmmakers have started to approach this issue in different ways. They have flipped the roles with an old female actress with a younger male romantic interest. Others have decided not to beat around the bush, purposely casting an older actor with a younger actress to show the truth of the power imbalance. Another issue the article explores is how male actors seem to have a longer time in the industry than female actresses. All of these issues were extremely interesting to read about, especially seeing how different people and films in the industry have responded.**
+
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+
+    **Our research will provide concrete data on whether the uncomfortable age gaps between male and female romantic interests in movies has actually been waning over time. This will tell us if criticism within the industry and from viewers has actually been effective in making a change in this issue.**
 
 ## Glimpse of data
 
 ```{r}
 #| label: load-data-3
-
-# add code here
+AgeGaps <- read.csv(file = 'data/age_gaps.csv')
+glimpse(AgeGaps)
 ```
