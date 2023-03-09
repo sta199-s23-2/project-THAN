@@ -32,7 +32,7 @@ Each observation is a soccer player from the video game FIFA 2021, and the data 
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
-How does a player\'s nationality and club team, correlate to their current rating and potential?
+How does a player's nationality and club team, correlate to their current rating and potential?
 
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
@@ -109,7 +109,6 @@ glimpse(Fifa_21)
 
     -   The proportion of individuals with discriminatory attitudes towards people with HIV is a Quantitative variable.
 
-
 ## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
@@ -165,7 +164,6 @@ glimpse(HIV_data)
     **This would explore the culture of Hollywood, especially as it tended to have a history of huge power dynamics among older males and younger females. For this question's significance on the male/female power dynamic in Hollywood, it would make more sense to only view the couples with a male and a female, although there are LGBTQ+ couple representations present in the data set. Based on intuition, I would believe that, generally, the age gap lessens as the movies become newer.**
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
-
 
     **The variables are quantitative for the age gap and categorical for the gender.**
 
