@@ -109,6 +109,6 @@
     "href": "report.html",
     "title": "Project title",
     "section": "",
-    "text": "Introduction and data\nMethodology\nResults\nW+F\nupdate about section\nRespond to all issues from chosen data set\nEveryone is your group must have at least 3 commits"
+    "text": "This data comes from the Tidy Tuesday repositories on GitHub via the site “Data is Plural.” It comes from Lynn Fisher who collected data from upwards of 630 movies, calculating the difference between the love interests’ ages. This was collected and published on February 7th, 2018. The data set explores the age difference between couples in Hollywood movies which demonstrates the male-female power dynamic in the movie industry. Observations of the data set list the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters’ names, their birth dates, and then their ages.\n\nMethodology\nResults\nW+F\nupdate about section\nRespond to all issues from chosen data set\nEveryone is your group must have at least 3 commits"
   }
 ]
