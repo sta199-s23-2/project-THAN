@@ -22,3 +22,15 @@ Our research will provide concrete data on whether the uncomfortable age gaps be
 We will aim to answer our research question first by removing outlying data points, like including same-sex couples, from the dataset. Given that there is not a long history of same-sex couples in film, it would be difficult to use these observations without skewing the data.
 
 3.  Results
+
+```{r}
+#| label: age-gap-point
+
+AgeGaps <- AgeGaps |>
+  mutate(older_partner = if_else(actor_1_age > actor_2_age, character_1_gender, character_2_gender))
+
+AgeGaps |>
+  ggplot(aes(x = release_year, y = age_difference, color = older_partner)) +
+  geom_point() +
+  scale_color_manual(values = c("woman" = "pink", "man" = "skyblue"))
+```
