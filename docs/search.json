@@ -32,7 +32,7 @@
     "href": "proposal.html#research-question",
     "title": "Project title",
     "section": "Research question",
-    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\n\nHow does a player's nationality and club team, correlate to their current rating and potential?\n\nA description of the research topic along with a concise statement of your hypotheses on this topic.\n\nI find it very intriguing to explore how a player’s nationality and club team affects their current rating and potential. For example, do some teams have player’s with low ratings but a very high potential rating in the future, and do some teams primarily have players with no potential room to grow? Also do certain countries have higher rated players than other countries, or do they have players with a larger amount of potential to improve? I hypothesize that the largest teams like Real Madrid or Barcelona will have players with a higher rating but no significantly greater potential growth. While smaller teams with a developmental academy like Ajax or Lisbon will have players with a lower rating but a higher level of potential growth.\n\nIdentify the types of variables in your research question. Categorical? Quantitative?\n\nNationality: Categorical\nClub team: Categorical\nRating: Quantitative\nPotential: Quantitative"
+    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\n\nHow does a player’s nationality and club team, correlate to their current rating and potential?\n\nA description of the research topic along with a concise statement of your hypotheses on this topic.\n\nI find it very intriguing to explore how a player’s nationality and club team affects their current rating and potential. For example, do some teams have player’s with low ratings but a very high potential rating in the future, and do some teams primarily have players with no potential room to grow? Also do certain countries have higher rated players than other countries, or do they have players with a larger amount of potential to improve? I hypothesize that the largest teams like Real Madrid or Barcelona will have players with a higher rating but no significantly greater potential growth. While smaller teams with a developmental academy like Ajax or Lisbon will have players with a lower rating but a higher level of potential growth.\n\nIdentify the types of variables in your research question. Categorical? Quantitative?\n\nNationality: Categorical\nClub team: Categorical\nRating: Quantitative\nPotential: Quantitative"
   },
   {
     "objectID": "proposal.html#literature",
@@ -109,6 +109,6 @@
     "href": "report.html",
     "title": "Project title",
     "section": "",
-    "text": "Add project writeup here."
+    "text": "Introduction and data\nMethodology\nResults\nW+F\nupdate about section\nRespond to all issues from chosen data set\nEveryone is your group must have at least 3 commits"
   }
 ]

@@ -7,4 +7,10 @@ execute:
   echo: true
 ---
 
-Add project writeup here.
+1.   Introduction and data
+2.  Methodology
+3.  Results
+4.  W+F
+5.  update about section
+6.  Respond to all issues from chosen data set
+7.  Everyone is your group must have at least 3 commits
