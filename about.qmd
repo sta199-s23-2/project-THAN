@@ -4,10 +4,9 @@ format: html
 editor: visual
 ---
 
-This project was developed by **\[team name\]** For [STA 199: Introduction to Data Science](https://sta199-s23-2.github.io/) at Duke University. The team is comprised of the following team members.
+This project was developed by **\[Team THAN\]** For [STA 199: Introduction to Data Science](https://sta199-s23-2.github.io/) at Duke University. The team is comprised of the following team members.
 
--   Harper de Andrade: Harper is a sophomore majoring in Computer Science and History.
--   Team member 2: One sentence description of Team member 2 (e.g., year, major, etc.).
--   Team member 3: One sentence description of Team member 3 (e.g., year, major, etc.).
--   Team member 4: One sentence description of Team member 4 (e.g., year, major, etc.).
--   ...
+-   Harper de Andrade: Harper is a sophomore from Durham, NC majoring in Computer Science and History.
+-   Teddy Nahoum: Teddy is a freshman from Brooklyn, NY majoring in Computer Science and a minor in Finance
+-   Naman Kulkarni: Naman is a freshman from Phoenix, AZ majoring in Economics
+-   Andres Hernandez: Andres is a sophomore from Fort Myers, FL majoring in Global Health
