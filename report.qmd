@@ -17,8 +17,16 @@ Does the age difference of actors in movies decrease as the release date becomes
 
 Our research will provide concrete data on whether the uncomfortable age gaps between male and female romantic interests in movies has actually been waning over time. This will tell us if criticism within the industry and from viewers has actually been effective in making a change in this issue.
 
-2.  Methodology
+**Methodology**
 
-We will aim to answer our research question first by removing outlying data points, like including same-sex couples, from the dataset. Given that there is not a long history of same-sex couples in film, it would be difficult to use these observations without skewing the data.
+We plan to answer our research question by filtering out the data set so that there are only movies with male and female romantic couples. Then, we will plot the age difference in movies over time via a scatter-plot with all the movies. We can group these movies into different eras to make it easier to understand. Then we can draw a best fit line to see the trend with this weird age-gap as time has elapsed. We predict that the gap will lessen a bit over time due to the criticism of this issue in the movie industry. Based on a first look at the data, I can infer that this hypothesis is true. Some other things to explore would be the trends of specific actors/actresses that may have experienced both sides of the age gaps, as well as how this trend exists in movies with multiple couples.
 
-3.  Results
+**Results**
+
+**W+F**
+
+**update about section**
+
+**Respond to all issues from chosen data set**
+
+**Everyone is your group must have at least 3 commits**
