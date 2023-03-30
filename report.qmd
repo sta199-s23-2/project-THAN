@@ -17,20 +17,105 @@ Does the age difference of actors in movies decrease as the release date becomes
 
 Our research will provide concrete data on whether the uncomfortable age gaps between male and female romantic interests in movies has actually been waning over time. This will tell us if criticism within the industry and from viewers has actually been effective in making a change in this issue.
 
-2.  Methodology
+Methodology
 
-We will aim to answer our research question first by removing outlying data points, like including same-sex couples, from the dataset. Given that there is not a long history of same-sex couples in film, it would be difficult to use these observations without skewing the data.
+We plan to answer our research question by filtering out the data set so that there are only movies with male and female romantic couples. Then, we will plot the age difference in movies over time via a scatter-plot with all the movies. We can group these movies into different eras to make it easier to understand. Then we can draw a best fit line to see the trend with this weird age-gap as time has elapsed. We predict that the gap will lessen a bit over time due to the criticism of this issue in the movie industry. Based on a first look at the data, I can infer that this hypothesis is true. Some other things to explore would be the trends of specific actors/actresses that may have experienced both sides of the age gaps, as well as how this trend exists in movies with multiple couples.
 
 3.  Results
 
 ```{r}
-#| label: age-gap-point
+#| label: load-data-3
 
-AgeGaps <- AgeGaps |>
-  mutate(older_partner = if_else(actor_1_age > actor_2_age, character_1_gender, character_2_gender))
+library(tidyverse)
+AgeGaps <- read.csv(file = 'data/age_gaps.csv')
+glimpse(AgeGaps)
 
-AgeGaps |>
+```
+
+```{r}
+#|label: remove-same-sex
+
+AgeGaps_updated <- AgeGaps |>
+  filter(character_1_gender != character_2_gender)
+```
+
+```{r}
+#| label: older-gender-point
+
+AgeGaps_updated <- AgeGaps_updated |>
+  mutate(older_partner = if_else(actor_1_age > actor_2_age, 
+                                 character_1_gender, 
+                                 character_2_gender))
+AgeGaps_updated |>
   ggplot(aes(x = release_year, y = age_difference, color = older_partner)) +
   geom_point() +
   scale_color_manual(values = c("woman" = "pink", "man" = "skyblue"))
 ```
+
+```{r}
+#| label: age-gap-histo
+                            
+AgeGaps_updated <- AgeGaps_updated |>
+  mutate(age_gap_range = if_else(age_difference >= 0 & age_difference <= 5, 
+                                 "0-5 years",
+                          if_else(age_difference >= 6 & age_difference <= 10, 
+                                  "6-10 years",
+                          if_else(age_difference >= 11 & age_difference <= 15, 
+                                  "11-15 years",
+                          if_else(age_difference >= 16 & age_difference <= 20, 
+                                  "16-20 years",
+                          if_else(age_difference >= 21 & age_difference <= 25, 
+                                  "21-25 years",
+                          if_else(age_difference >= 26 & age_difference <= 30, 
+                                  "26-30 years",
+                          if_else(age_difference >= 31 & age_difference <= 35, 
+                                  "31-35 years",
+                          if_else(age_difference >= 36 & age_difference <= 40, 
+                                  "36-40 years",
+                          if_else(age_difference >= 41 & age_difference <= 45, 
+                                  "41-45 years",
+                          if_else(age_difference >= 46 & age_difference <= 50, 
+                                  "46-50 years", "51-55 years")))))))))))
+
+AgeGaps_updated <- AgeGaps_updated |>
+  mutate(age_gap_cat = if_else(age_difference <= 10, 
+                                 "small age gap",
+                          if_else(age_difference >= 11 & age_difference <= 20, 
+                                  "medium age gap", "large age gap")))
+
+AgeGaps_updated <- AgeGaps_updated |>
+  mutate(decades = if_else(release_year >= 1930 & release_year < 1940, 
+                                 "1930s",
+                          if_else(release_year >= 1941 & release_year < 1950, 
+                                  "1940s",
+                          if_else(release_year >= 1951 & release_year < 1960, 
+                                  "1950s",
+                          if_else(release_year >= 1961 & release_year < 1970, 
+                                  "1960s",
+                          if_else(release_year >= 1971 & release_year < 1980, 
+                                  "1970s",
+                          if_else(release_year >= 1981 & release_year < 1990, 
+                                  "1980s",
+                          if_else(release_year >= 1991 & release_year < 2000, 
+                                  "1990s",
+                          if_else(release_year >= 2001 & release_year < 2010, 
+                                  "2000s",
+                          if_else(release_year >= 2011 & release_year < 2020, 
+                                  "2010s", "2020s"))))))))))
+
+
+AgeGaps_updated |>
+  ggplot(aes(x = decades, fill = age_gap_cat)) +
+  geom_bar()
+
+```
+
+**Results**
+
+**W+F**
+
+**update about section**
+
+**Respond to all issues from chosen data set**
+
+**Everyone is your group must have at least 3 commits**
