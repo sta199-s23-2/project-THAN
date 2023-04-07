@@ -9,6 +9,23 @@ execute:
 
 ### Data Introduction:
 
+
+=======
+This data comes from the Tidy Tuesday repositories on GitHub via the site "Data is Plural." It comes from Lynn Fisher who collected data from upwards of 630 movies, calculating the difference between the love interests' ages. This was collected and published on February 7th, 2018. The data set explores the age difference between couples in Hollywood movies which demonstrates the male-female power dynamic in the movie industry. Observations of the data set list the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters' names, their birth dates, and then their ages.
+
+### Research Question:
+
+Does the age difference of actors in movies decrease as the release date becomes more modern?
+
+Our research will provide concrete data on whether the uncomfortable age gaps between male and female romantic interests in movies has actually been waning over time. This will tell us if criticism within the industry and from viewers has actually been effective in making a change in this issue.
+
+Methodology
+
+We plan to answer our research question by filtering out the data set so that there are only movies with male and female romantic couples. Then, we will plot the age difference in movies over time via a scatter-plot with all the movies. We can group these movies into different eras to facilitate understanding. Then we can draw a best fit line to see the trend with this odd age-gap as time has elapsed. We predict that the gap will lessen a bit over time due to the criticism of this issue in the movie industry. Based on a first look at the data, one can infer that this hypothesis is true. Some other things to explore would be the trends of specific actors/actresses that may have experienced both sides of the age gaps, and the existence of this trend in movies with multiple couples.
+
+3.  Results
+
+
 ```{r}
 #| label: load-data-3
 
