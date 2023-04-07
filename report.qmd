@@ -148,3 +148,5 @@ Agegaps_updated |>
        x = "25 Year Film Release Era",
        y = "Proportion of Films")
 ```
+
+The bar chart above simplifies the previous bar chart by combining decades into chunks of 25 years. The plot clearly shows that as over each 25 year period, the proportion of films containing age gaps of over 15 years decreases. From pre-1950, with over 50% of films having large age gaps over of over 15 years to 2000-2025 where less than 25% of films contain a couple with an age gap of over 15 years.
