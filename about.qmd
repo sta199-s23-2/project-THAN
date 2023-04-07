@@ -9,4 +9,4 @@ This project was developed by **\[Team THAN\]** For [STA 199: Introduction to Da
 -   Harper de Andrade: Harper is a sophomore from Durham, NC majoring in Computer Science and History.
 -   Teddy Nahoum: Teddy is a freshman from Brooklyn, NY majoring in Computer Science and a minor in Finance
 -   Naman Kulkarni: Naman is a freshman from Phoenix, AZ majoring in Economics
--   Andres Hernandez: Andres is a sophomore from Fort Myers, FL majoring in Global Health
+-   Andres Hernandez: Andres is a sophomore from Fort Myers, FL majoring in Global Health and ICS with a minor in French.
