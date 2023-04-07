@@ -9,7 +9,6 @@ execute:
 
 ### Data Introduction:
 
-
 ```{r}
 #| label: load-data-3
 
@@ -158,8 +157,6 @@ The bar chart above simplifies the previous bar chart by combining decades into 
 
 ### Conclusion
 
-- As the release dates of Hollywood films become more modern, the age difference between actors whose characters are in relationships decreases. 
-- As films become more modern, the proportion of films with age gaps of over 15 years has decreased consistently. 
-- It is significantly more common for the older partner in these couples to be male but in cases where the older partner is female, the age gap tends to be less than ten years.  
-
-
+-   As the release dates of Hollywood films become more modern, the age difference between actors whose characters are in relationships decreases.
+-   As films become more modern, the proportion of films with age gaps of over 15 years has decreased consistently.
+-   It is significantly more common for the older partner in these couples to be male but in cases where the older partner is female, the age gap tends to be less than ten years.
