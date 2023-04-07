@@ -168,7 +168,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#data-introduction" id="toc-data-introduction" class="nav-link active" data-scroll-target="#data-introduction">Data Introduction:</a></li>
   <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research Question:</a></li>
-  <li><a href="#research-question-1" id="toc-research-question-1" class="nav-link" data-scroll-target="#research-question-1">Research Question:</a></li>
   <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   </ul>
@@ -196,17 +195,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="data-introduction" class="level3">
 <h3 class="anchored" data-anchor-id="data-introduction">Data Introduction:</h3>
-<p>======= This data comes from the Tidy Tuesday repositories on GitHub via the site “Data is Plural.” It comes from Lynn Fisher who collected data from upwards of 630 movies, calculating the difference between the love interests’ ages. This was collected and published on February 7th, 2018. The data set explores the age difference between couples in Hollywood movies which demonstrates the male-female power dynamic in the movie industry. Observations of the data set list the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters’ names, their birth dates, and then their ages.</p>
-</section>
-<section id="research-question" class="level3">
-<h3 class="anchored" data-anchor-id="research-question">Research Question:</h3>
-<p>Does the age difference of actors in movies decrease as the release date becomes more modern?</p>
-<p>Our research will provide concrete data on whether the uncomfortable age gaps between male and female romantic interests in movies has actually been waning over time. This will tell us if criticism within the industry and from viewers has actually been effective in making a change in this issue.</p>
-<p>Methodology</p>
-<p>We plan to answer our research question by filtering out the data set so that there are only movies with male and female romantic couples. Then, we will plot the age difference in movies over time via a scatter-plot with all the movies. We can group these movies into different eras to facilitate understanding. Then we can draw a best fit line to see the trend with this odd age-gap as time has elapsed. We predict that the gap will lessen a bit over time due to the criticism of this issue in the movie industry. Based on a first look at the data, one can infer that this hypothesis is true. Some other things to explore would be the trends of specific actors/actresses that may have experienced both sides of the age gaps, and the existence of this trend in movies with multiple couples.</p>
-<ol start="3" type="1">
-<li>Results</li>
-</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -250,8 +238,8 @@ $ actor_2_age        &lt;int&gt; 23, 24, 20, 23, 38, 17, 22, 30, 19, 39, 23, 20,
 </ol>
 <p>Observations of the data set list the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters’ names, their birth dates, and then their ages.</p>
 </section>
-<section id="research-question-1" class="level3">
-<h3 class="anchored" data-anchor-id="research-question-1">Research Question:</h3>
+<section id="research-question" class="level3">
+<h3 class="anchored" data-anchor-id="research-question">Research Question:</h3>
 <p><strong>Does the age difference of actors in movies decrease as the release date becomes more modern?</strong></p>
 <p>Our research will provide concrete data on whether the uncomfortable age gaps between male and female romantic interests in movies has actually been waning over time. This will tell us if criticism within the industry and from viewers has actually been effective in making a change in this issue.</p>
 <p>Some other things to explore would be the trends of specific actors/actresses that may have experienced both sides of the age gaps, as well as how this trend exists in movies with multiple couples. As well as looking at whether the male or female member of the couples tends to be older, and whether this trend has shifted over time.</p>
