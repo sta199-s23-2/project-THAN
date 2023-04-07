@@ -79,6 +79,8 @@ Agegaps_updated |>
        color = "Older Partner Gender")
 ```
 
+The scatter plot above shows every movie observation over time, the x-axis plotting the year the film was released and the y-axis plotting the age gap in years. Each point is shaded either pink, if the older partner was female, or blue, if the older partner was male. The graph shows that the older partner in Hollywood movie relationships is disproportionately male, and that in cases where the older partner is female, the age gap tends to be on the smaller side. In addition, the three best fit lines, purple representing all couples regardless of the gender of the older partner, all show that over time the size of these age gaps has decreased.
+
 ```{r}
 #| label: age-gap-histo-decades
 
@@ -123,6 +125,8 @@ Agegaps_updated |>
 
 ```
 
+The bar chart above groups movie observations into the decade that they were released. The plot shows that as over time the proportion of films containing age gaps of over 15 years decreases. In the 1940s, over 80% of films had a large age gap of over 15 years. Now, in the 2020s around 30% of films contain a couple with an age gap of over 15 years.
+
 ```{r}
 #| label: age-gap-histo-25years
 
@@ -150,4 +154,4 @@ Agegaps_updated |>
        y = "Proportion of Films")
 ```
 
-The bar chart above simplifies the previous bar chart by combining decades into chunks of 25 years. The plot clearly shows that as over each 25 year period, the proportion of films containing age gaps of over 15 years decreases. From pre-1950, with over 50% of films having large age gaps over of over 15 years to 2000-2025 where less than 25% of films contain a couple with an age gap of over 15 years.
+The bar chart above simplifies the previous bar chart by combining decades into chunks of 25 years. The plot clearly shows that as over each 25 year period, the proportion of films containing age gaps of over 15 years decreases. From pre-1950, with over 50% of films having large age gaps of over 15 years to 2000-2025 where less than 25% of films contain a couple with an age gap of over 15 years.
