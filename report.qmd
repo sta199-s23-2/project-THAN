@@ -9,12 +9,8 @@ execute:
 
 ### Data Introduction:
 
-<<<<<<< HEAD
-This data comes from the Tidy Tuesday repositories on GitHub via the site "Data is Plural." It comes from Lynn Fisher who collected data from upwards of 630 movies, calculating the difference between the love interests' ages. This was collected and published around February 7th, 2018. The data set explores the age difference between couples in Hollywood movies which demonstrates the male-female power dynamic in the movie industry. Observations of the data set list the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters' names, their birth dates, and then their ages.
-=======
-<<<<<<< HEAD
-This data comes from the Tidy Tuesday repositories on GitHub via the site "Data is Plural." It comes from Lynn Fisher, who collected data from upwards of 630 movies while calculating the difference between the love interests' ages. This was collected and published on February 7th, 2018. The data set explores the age difference between couples in Hollywood movies, demonstrating the male-female power dynamic in the movie industry. Observations of the data set include the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters' names, their birthdates, and then their ages.
->>>>>>> f6a12c305ac70cd9c45eaa1f0ec6e75017745b14
+
+This data comes from the Tidy Tuesday repositories on GitHub via the site "Data is Plural." It comes from Lynn Fisher, who collected data from upwards of 630 movies while calculating the difference between the love interests' ages. This was collected and published around February 7th, 2018. The data set explores the age difference between couples in Hollywood movies, demonstrating the male-female power dynamic in the movie industry. Observations of the data set include the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters' names, their birthdates, and then their ages.
 
 ### Research Question:
 
@@ -29,7 +25,6 @@ We plan to answer our research question by filtering out the data set so that th
 3.  Results
 
 =======
->>>>>>> 9c4f40e8fd99d0ee79d64138b1dd231fd8effd70
 ```{r}
 #| label: load-data-3
 
