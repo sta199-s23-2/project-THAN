@@ -174,7 +174,7 @@ Agegaps_updated |>
 
 ```
 
-The bar chart above groups movie observations into the decade that they were released. The plot shows that as over time the proportion of films containing age gaps of over 15 years decreases. In the 1940s, over 80% of films had a large age gap of over 15 years. Now, in the 2020s around 30% of films contain a couple with an age gap of over 15 years.
+The bar chart above groups movie observations into the decade that they were released. The plot shows that as over time the proportion of films containing age gaps of over 15 years decreases. In the 1940s, over 80% of films had a large age gap of over 15 years. It may be beneficial to note that World War II occurred during most of this decade. This may have caused this period of age gaps of over 15 years because the younger men were off fighting in war rather than acting. Additionally, it is important to recognize how there are not many data points for the 1930s decade as movies were just becoming more prevalent in society during this time period. Now, in the 2020s around 30% of films contain a couple with an age gap of over 15 years.
 
 ```{r}
 #| label: age-gap-histo-25years
