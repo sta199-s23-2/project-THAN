@@ -27,8 +27,8 @@ We plan to answer our research question by filtering out the data set so that th
 
 ```{r}
 #| label: load-data-3
-
 library(tidyverse)
+library(tidymodels)
 Agegaps <- read.csv(file = 'data/age_gaps.csv')
 glimpse(Agegaps)
 
@@ -82,7 +82,7 @@ Agegaps_hetero <- Agegaps_hetero |>
   mutate(older_partner = if_else(actor_1_age > actor_2_age & 
                                    character_1_gender == "man", "Male",
                                  if_else(actor_1_age == actor_2_age, 
-                                         "No Gap", "Female")))
+                                         "No Gap", "Female"))) 
 
 Agegaps_hetero |>
   filter(age_difference != 0) |>
@@ -98,22 +98,14 @@ Agegaps_hetero |>
 ```
 
 ```{r}
-#| label: mean-agegap-summary
-
-Agegaps_hetero |> 
-  summarize(m = mean(age_difference , na.rm = T))
-
+#| label: agegap-summary-hetero
 Agegaps_hetero |> 
   group_by(older_partner) |>
   summarize(m = mean(age_difference , na.rm = T))
 ```
 
 ```{r}
-est_mu_overall <- 10.36572
-est_sigma_overall <- sd(Agegaps_hetero$age_difference , na.rm = T) / sqrt(1132)
-qnorm(c(0.025, 0.975), est_mu_overall, est_sigma_overall)
-
-
+#| label: agegap-hetero-clt
 est_mu_m <- 11.7
 Agegaps_h_m <-Agegaps_hetero |> 
   filter(older_partner == "Male")
@@ -131,38 +123,6 @@ qnorm(c(0.025, 0.975), est_mu_f, est_sigma_f)
 The scatter plot above shows every movie observation over time where the couple has an age gap of atleast one year, the x-axis plotting the year the film was released and the y-axis plotting the age gap in years. Each point is shaded either pink, if the older partner was female, or blue, if the older partner was male. The graph shows that the older partner in Hollywood movie relationships is disproportionately male, and that in cases where the older partner is female, the age gap tends to be on the smaller side. This is supported by calculations using the Central Limit Theorem where we can say with 95% confidence that the true mean age gap in couples where the older partner was female is between only 4.6 and 6.4 years whereas the true mean age gap in couples where the older partner was male is between 11.2 and 12.2 years. 
 
 In addition, the three best fit lines, purple representing all couples regardless of the gender of the older partner, all show that over time the size of these age gaps has decreased.
-
-#### Same-Sex Couples
-
-```{r}
-#|label: filter-samesex
-
-Agegaps_samesex <- Agegaps |>
-  filter(character_1_gender == character_2_gender)
-```
-
-```{r}
-#| label: agegap-samesex
-
-onlygaps_samesex <- Agegaps_samesex |>
-  filter(age_difference != 0) |>
-  mutate(older_partner = if_else(actor_1_age > actor_2_age & 
-                                   character_1_gender == "man", 
-                                 "Gay", "Lesbian"))
-
-onlygaps_samesex |>
-  ggplot(aes(x = release_year, y = age_difference, color = older_partner)) +
-  geom_point(alpha = .5) +
-  geom_smooth(method = lm, se = FALSE, color = "#740C9A") +
-  scale_color_manual(values = c("Gay" = "#21B0FF", "Lesbian" = "#FF218C")) +
-  geom_smooth(method = lm, se = FALSE) +
-  labs(title = "Age Gaps in Hollywood Films Over the Years", 
-       x = "Movie Release Year",
-       y = "Age Gap In Years",
-       color = "Relationship Type")
-```
-
-\-\-\-\-\-\-\-\-\-\-\-\--
 
 ```{r}
 #| label: age-gap-histo-decades
@@ -238,6 +198,116 @@ Agegaps_updated |>
 ```
 
 The bar chart above simplifies the previous bar chart by combining decades into chunks of 25 years. The plot clearly shows that as over each 25 year period, the proportion of films containing age gaps of over 15 years decreases. From pre-1950, with over 50% of films having large age gaps of over 15 years to 2000-2025 where less than 25% of films contain a couple with an age gap of over 15 years.
+
+#### Same-Sex Couples
+
+```{r}
+#|label: filter-samesex
+
+Agegaps_samesex <- Agegaps |>
+  filter(character_1_gender == character_2_gender)
+```
+
+```{r}
+#| label: agegap-samesex
+
+Agegaps_samesex <- Agegaps_samesex |>
+  mutate(older_partner = if_else(actor_1_age > actor_2_age & 
+                                   character_1_gender == "man", "Gay",
+                                 if_else(actor_1_age == actor_2_age, 
+                                         "No Gap", "Lesbian")))
+
+Agegaps_samesex |>
+  filter(age_difference != 0) |>
+  ggplot(aes(x = release_year, y = age_difference, color = older_partner)) +
+  geom_point(alpha = .5) +
+  geom_smooth(method = lm, se = FALSE, color = "#740C9A") +
+  scale_color_manual(values = c("Gay" = "#21B0FF", "Lesbian" = "#FF218C")) +
+  geom_smooth(method = lm, se = FALSE) +
+  labs(title = "Age Gaps in Hollywood Films Over the Years", 
+       x = "Movie Release Year",
+       y = "Age Gap In Years",
+       color = "Relationship Type")
+```
+
+```{r}
+#| label: agegap-summary-samesex
+Agegaps_samesex |> 
+  group_by(older_partner) |>
+  summarize(n = n())
+
+Agegaps_samesex |> 
+  group_by(older_partner) |>
+  summarize(mean = mean(age_difference, na.rm = T))
+```
+
+Looking at only the data for same-sex couples, we get a completely different picture. Since 1997, the earliest datapoint for same sex relationships in the dataset, the average age gap between partners has increased. Given there are less observations available for samesex couples, we can not justify using the Central Limit Theorem to create a confidence interval ($12 < 30$, $11 < 30$) so we will use bootstrapping to determine the mean size of the age gap between partners portrayed in same sex relationships.
+
+```{r}
+#| label: agegap-samesex-bootstrap
+
+set.seed(12345)
+
+Agegaps_s_m <-Agegaps_samesex |> 
+  filter(older_partner == "Gay")
+
+male_df <- Agegaps_s_m |>
+  specify(response = age_difference) |>
+  generate(reps = 10000, type = "bootstrap") |>
+  calculate(stat = "mean")
+
+male_df |>
+  summarize(lower = quantile(stat, 0.025),
+            upper = quantile(stat, 0.975))
+
+Agegaps_s_f <-Agegaps_samesex |> 
+  filter(older_partner == "Lesbian")
+
+female_df <- Agegaps_s_f |>
+  specify(response = age_difference) |>
+  generate(reps = 10000, type = "bootstrap") |>
+  calculate(stat = "mean")
+
+female_df |>
+  summarize(lower = quantile(stat, 0.025),
+            upper = quantile(stat, 0.975))
+```
+
+```{r}
+#| label: agegap-hetero-1997
+
+Agegaps_hetero_1997 <- Agegaps_hetero |>
+  mutate(older_partner = if_else(actor_1_age > actor_2_age & 
+                                   character_1_gender == "man", "Male",
+                                 if_else(actor_1_age == actor_2_age, 
+                                         "No Gap", "Female"))) |>
+  filter(release_year >= 1997)
+```
+
+```{r}
+#| label: agegap-summary-hetero-1997
+Agegaps_hetero_1997 |> 
+  group_by(older_partner) |>
+  summarize(m = mean(age_difference , na.rm = T))
+```
+
+```{r}
+#| label: agegap-hetero-clt-1997
+est_mu_m_1997 <- 10.7
+Agegaps_h_m_1997 <-Agegaps_hetero_1997 |> 
+  filter(older_partner == "Male")
+est_sigma_m_1997 <- sd(Agegaps_h_m_1997$age_difference , na.rm = T) / sqrt(670)
+qnorm(c(0.025, 0.975), est_mu_m_1997, est_sigma_m_1997)
+
+est_mu_f_1997 <- 5.39
+Agegaps_h_f_1997 <- Agegaps_hetero_1997 |> 
+  filter(older_partner == "Female")
+est_sigma_f_1997 <- sd(Agegaps_h_f_1997$age_difference , na.rm = T) / sqrt(157)
+qnorm(c(0.025, 0.975), est_mu_f_1997, est_sigma_f_1997)
+
+```
+For gay same sex couples, we can say with 95% confidence that the true mean age gap is between 9 and 22.7 years, whereas for lesbian couples the mean gap is between 6.45 and 16.3 years. 
+Over the same time frame (1997-2021), for heterosexual couples, we can say with 95% confidence that the true mean age gap was between 10.1 and 11.3 years for couples where the male partner was older and 4.5 to 6.2 years for couples where the female partner was older. 
 
 ### Conclusion
 
