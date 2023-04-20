@@ -78,13 +78,14 @@ Agegaps_hetero <- Agegaps |>
 ```{r}
 #| label: agegap-hetero
 
-onlygaps_hetero <- Agegaps_hetero |>
-  filter(age_difference != 0) |>
+Agegaps_hetero <- Agegaps_hetero |>
   mutate(older_partner = if_else(actor_1_age > actor_2_age & 
-                                   character_1_gender == "man", 
-                                 "Male", "Female"))
+                                   character_1_gender == "man", "Male",
+                                 if_else(actor_1_age == actor_2_age, 
+                                         "No Gap", "Female")))
 
-onlygaps_hetero |>
+Agegaps_hetero |>
+  filter(age_difference != 0) |>
   ggplot(aes(x = release_year, y = age_difference, color = older_partner)) +
   geom_point(alpha = .5) +
   geom_smooth(method = lm, se = FALSE, color = "#740C9A") +
@@ -96,7 +97,40 @@ onlygaps_hetero |>
        color = "Older Partner Gender")
 ```
 
-The scatter plot above shows every movie observation over time where the couple has an age gap of atleast one year, the x-axis plotting the year the film was released and the y-axis plotting the age gap in years. Each point is shaded either pink, if the older partner was female, or blue, if the older partner was male. The graph shows that the older partner in Hollywood movie relationships is disproportionately male, and that in cases where the older partner is female, the age gap tends to be on the smaller side. In addition, the three best fit lines, purple representing all couples regardless of the gender of the older partner, all show that over time the size of these age gaps has decreased.
+```{r}
+#| label: mean-agegap-summary
+
+Agegaps_hetero |> 
+  summarize(m = mean(age_difference , na.rm = T))
+
+Agegaps_hetero |> 
+  group_by(older_partner) |>
+  summarize(m = mean(age_difference , na.rm = T))
+```
+
+```{r}
+est_mu_overall <- 10.36572
+est_sigma_overall <- sd(Agegaps_hetero$age_difference , na.rm = T) / sqrt(1132)
+qnorm(c(0.025, 0.975), est_mu_overall, est_sigma_overall)
+
+
+est_mu_m <- 11.7
+Agegaps_h_m <-Agegaps_hetero |> 
+  filter(older_partner == "Male")
+est_sigma_m <- sd(Agegaps_h_m$age_difference , na.rm = T) / sqrt(917)
+qnorm(c(0.025, 0.975), est_mu_m, est_sigma_m)
+
+est_mu_f <- 5.50
+Agegaps_h_f <- Agegaps_hetero |> 
+  filter(older_partner == "Female")
+est_sigma_f <- sd(Agegaps_h_f$age_difference , na.rm = T) / sqrt(185)
+qnorm(c(0.025, 0.975), est_mu_f, est_sigma_f)
+
+```
+
+The scatter plot above shows every movie observation over time where the couple has an age gap of atleast one year, the x-axis plotting the year the film was released and the y-axis plotting the age gap in years. Each point is shaded either pink, if the older partner was female, or blue, if the older partner was male. The graph shows that the older partner in Hollywood movie relationships is disproportionately male, and that in cases where the older partner is female, the age gap tends to be on the smaller side. This is supported by calculations using the Central Limit Theorem where we can say with 95% confidence that the true mean age gap in couples where the older partner was female is between only 4.6 and 6.4 years whereas the true mean age gap in couples where the older partner was male is between 11.2 and 12.2 years. 
+
+In addition, the three best fit lines, purple representing all couples regardless of the gender of the older partner, all show that over time the size of these age gaps has decreased.
 
 #### Same-Sex Couples
 
