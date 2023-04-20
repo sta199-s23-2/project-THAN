@@ -9,7 +9,6 @@ execute:
 
 ### Data Introduction:
 
-
 This data comes from the Tidy Tuesday repositories on GitHub via the site "Data is Plural." It comes from Lynn Fisher, who collected data from upwards of 630 movies while calculating the difference between the love interests' ages. This was collected and published around February 7th, 2018. The data set explores the age difference between couples in Hollywood movies, demonstrating the male-female power dynamic in the movie industry. Observations of the data set include the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters' names, their birthdates, and then their ages.
 
 ### Research Question:
@@ -25,6 +24,7 @@ We plan to answer our research question by filtering out the data set so that th
 3.  Results
 
 =======
+
 ```{r}
 #| label: load-data-3
 
@@ -64,25 +64,27 @@ Since same-sex couples have only begun to be shown in film in the last couple de
 
 We will then plot the age difference in movies over time via a scatter-plot with all of the movies. We can then draw a best fit line to see the trend of age-gaps as time has elapsed. We will also color the age differences based on whether the man or woman in the relationship was older. These visualizations are below in results to give an idea of how this would all work out.
 
-### Results
+# Results
+
+#### Heterosexual Couples
 
 ```{r}
-#|label: remove-same-sex
+#|label: filter-hetero
 
-Agegaps_updated <- Agegaps |>
+Agegaps_hetero <- Agegaps |>
   filter(character_1_gender != character_2_gender)
 ```
 
 ```{r}
-#| label: age-gap-point
+#| label: agegap-hetero
 
-onlygaps <- Agegaps_updated |>
+onlygaps_hetero <- Agegaps_hetero |>
   filter(age_difference != 0) |>
   mutate(older_partner = if_else(actor_1_age > actor_2_age & 
                                    character_1_gender == "man", 
                                  "Male", "Female"))
 
-onlygaps |>
+onlygaps_hetero |>
   ggplot(aes(x = release_year, y = age_difference, color = older_partner)) +
   geom_point(alpha = .5) +
   geom_smooth(method = lm, se = FALSE, color = "#740C9A") +
@@ -96,10 +98,42 @@ onlygaps |>
 
 The scatter plot above shows every movie observation over time where the couple has an age gap of atleast one year, the x-axis plotting the year the film was released and the y-axis plotting the age gap in years. Each point is shaded either pink, if the older partner was female, or blue, if the older partner was male. The graph shows that the older partner in Hollywood movie relationships is disproportionately male, and that in cases where the older partner is female, the age gap tends to be on the smaller side. In addition, the three best fit lines, purple representing all couples regardless of the gender of the older partner, all show that over time the size of these age gaps has decreased.
 
+#### Same-Sex Couples
+
+```{r}
+#|label: filter-samesex
+
+Agegaps_samesex <- Agegaps |>
+  filter(character_1_gender == character_2_gender)
+```
+
+```{r}
+#| label: agegap-samesex
+
+onlygaps_samesex <- Agegaps_samesex |>
+  filter(age_difference != 0) |>
+  mutate(older_partner = if_else(actor_1_age > actor_2_age & 
+                                   character_1_gender == "man", 
+                                 "Gay", "Lesbian"))
+
+onlygaps_samesex |>
+  ggplot(aes(x = release_year, y = age_difference, color = older_partner)) +
+  geom_point(alpha = .5) +
+  geom_smooth(method = lm, se = FALSE, color = "#740C9A") +
+  scale_color_manual(values = c("Gay" = "#21B0FF", "Lesbian" = "#FF218C")) +
+  geom_smooth(method = lm, se = FALSE) +
+  labs(title = "Age Gaps in Hollywood Films Over the Years", 
+       x = "Movie Release Year",
+       y = "Age Gap In Years",
+       color = "Relationship Type")
+```
+
+\-\-\-\-\-\-\-\-\-\-\-\--
+
 ```{r}
 #| label: age-gap-histo-decades
 
-Agegaps_updated <- Agegaps_updated |>
+Agegaps_updated <- Agegaps_hetero |>
   mutate(age_gap_cat = if_else(age_difference <= 15, 
                                "Age Gap of 15 Years or Less", 
                                "Age Gap Over 15 Years")) |>

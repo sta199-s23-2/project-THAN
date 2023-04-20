@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Project title</title>
+<title>Does the age difference of actors in movies decrease as the release date becomes more modern?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -168,6 +168,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#data-introduction" id="toc-data-introduction" class="nav-link active" data-scroll-target="#data-introduction">Data Introduction:</a></li>
   <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research Question:</a></li>
+  <li><a href="#research-question-1" id="toc-research-question-1" class="nav-link" data-scroll-target="#research-question-1">Research Question:</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -176,7 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project title</h1>
+<h1 class="title">Does the age difference of actors in movies decrease as the release date becomes more modern?</h1>
 <p class="subtitle lead">Report</p>
 </div>
 
@@ -193,17 +199,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="data-introduction" class="level3">
 <h3 class="anchored" data-anchor-id="data-introduction">Data Introduction:</h3>
-<p>This data comes from the Tidy Tuesday repositories on GitHub via the site “Data is Plural.” It comes from Lynn Fisher who collected data from upwards of 630 movies, calculating the difference between the love interests’ ages. This was collected and published on February 7th, 2018. The data set explores the age difference between couples in Hollywood movies which demonstrates the male-female power dynamic in the movie industry. Observations of the data set list the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters’ names, their birth dates, and then their ages.</p>
+<p>This data comes from the Tidy Tuesday repositories on GitHub via the site “Data is Plural.” It comes from Lynn Fisher, who collected data from upwards of 630 movies while calculating the difference between the love interests’ ages. This was collected and published around February 7th, 2018. The data set explores the age difference between couples in Hollywood movies, demonstrating the male-female power dynamic in the movie industry. Observations of the data set include the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters’ names, their birthdates, and then their ages.</p>
 </section>
 <section id="research-question" class="level3">
 <h3 class="anchored" data-anchor-id="research-question">Research Question:</h3>
 <p>Does the age difference of actors in movies decrease as the release date becomes more modern?</p>
 <p>Our research will provide concrete data on whether the uncomfortable age gaps between male and female romantic interests in movies has actually been waning over time. This will tell us if criticism within the industry and from viewers has actually been effective in making a change in this issue.</p>
 <p>Methodology</p>
-<p>We plan to answer our research question by filtering out the data set so that there are only movies with male and female romantic couples. Then, we will plot the age difference in movies over time via a scatter-plot with all the movies. We can group these movies into different eras to make it easier to understand. Then we can draw a best fit line to see the trend with this weird age-gap as time has elapsed. We predict that the gap will lessen a bit over time due to the criticism of this issue in the movie industry. Based on a first look at the data, I can infer that this hypothesis is true. Some other things to explore would be the trends of specific actors/actresses that may have experienced both sides of the age gaps, as well as how this trend exists in movies with multiple couples.</p>
+<p>We plan to answer our research question by filtering out the data set so that there are only movies with male and female romantic couples. Then, we will plot the age difference in movies over time via a scatter-plot with all the movies. We can group these movies into different eras to facilitate understanding. Then we can draw a best fit line to see the trend with this odd age-gap as time has elapsed. We predict that the gap will lessen a bit over time due to the criticism of this issue in the movie industry. Based on a first look at the data, one can infer that this hypothesis is true. Some other things to explore would be the trends of specific actors/actresses that may have experienced both sides of the age gaps, and the existence of this trend in movies with multiple couples.</p>
 <ol start="3" type="1">
 <li>Results</li>
 </ol>
+<p>=======</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -216,8 +223,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>AgeGaps <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">'data/age_gaps.csv'</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(AgeGaps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Agegaps <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">'data/age_gaps.csv'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(Agegaps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,155
 Columns: 13
@@ -236,89 +243,183 @@ $ actor_1_age        &lt;int&gt; 75, 74, 69, 68, 81, 59, 62, 69, 57, 77, 59, 56,
 $ actor_2_age        &lt;int&gt; 23, 24, 20, 23, 38, 17, 22, 30, 19, 39, 23, 20, 30,…</code></pre>
 </div>
 </div>
+<p>This data comes from the Tidy Tuesday repositories on GitHub via the site “Data is Plural.”</p>
+<p>The dataset, <em>Hollywood Age Gap</em>, was compiled by Lynn Fisher andexplores the age difference between actors playing couples in Hollywood movies which demonstrates the male-female power dynamic in the movie industry.</p>
+<p><em>Hollywood Age Gap</em> has information from upwards of 630 movies, sampled from films from 1935 to 2022, the dataset was most recently updated on February 25th, 2023.</p>
+<p>The dataset, while mostly compiled by Lynn Fisher, is open source and in turn anyone can submit data to the dataset for consideration contingent on three rules:</p>
+<ol type="1">
+<li>The actors are atleast 17 years old</li>
+<li>The actors are actually love interests in the film</li>
+<li>The characters can not be animated</li>
+</ol>
+<p>Observations of the data set list the movie name, director, release year, and then the age difference before having columns for what number couple each one is (only matters if there are multiple in the movie), their names, their characters’ names, their birth dates, and then their ages.</p>
+</section>
+<section id="research-question-1" class="level3">
+<h3 class="anchored" data-anchor-id="research-question-1">Research Question:</h3>
+<p><strong>Does the age difference of actors in movies decrease as the release date becomes more modern?</strong></p>
+<p>Our research will provide concrete data on whether the uncomfortable age gaps between male and female romantic interests in movies has actually been waning over time. This will tell us if criticism within the industry and from viewers has actually been effective in making a change in this issue.</p>
+<p>Some other things to explore would be the trends of specific actors/actresses that may have experienced both sides of the age gaps, as well as how this trend exists in movies with multiple couples. As well as looking at whether the male or female member of the couples tends to be older, and whether this trend has shifted over time.</p>
+</section>
+<section id="methodology" class="level3">
+<h3 class="anchored" data-anchor-id="methodology">Methodology</h3>
+<p>We predict that overtime the age gaps between couples will lessen due to the criticism of these age gaps within the film industry. Based on a first look at the data, we can infer that this hypothesis is true.</p>
+<p>Since same-sex couples have only begun to be shown in film in the last couple decades, we plan to filter the data set so that it only contains information about movies with heterosexual couples.</p>
+<p>We will then plot the age difference in movies over time via a scatter-plot with all of the movies. We can then draw a best fit line to see the trend of age-gaps as time has elapsed. We will also color the age differences based on whether the man or woman in the relationship was older. These visualizations are below in results to give an idea of how this would all work out.</p>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<section id="heterosexual-couples" class="level4">
+<h4 class="anchored" data-anchor-id="heterosexual-couples">Heterosexual Couples</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|label: remove-same-sex</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|label: filter-hetero</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>AgeGaps_updated <span class="ot">&lt;-</span> AgeGaps <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Agegaps_hetero <span class="ot">&lt;-</span> Agegaps <span class="sc">|&gt;</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(character_1_gender <span class="sc">!=</span> character_2_gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>AgeGaps_updated <span class="ot">&lt;-</span> AgeGaps_updated <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">older_partner =</span> <span class="fu">if_else</span>(actor_1_age <span class="sc">&gt;</span> actor_2_age, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                                 character_1_gender, </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                                 character_2_gender))</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>AgeGaps_updated <span class="sc">|&gt;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> release_year, <span class="at">y =</span> age_difference, <span class="at">color =</span> older_partner)) <span class="sc">+</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"woman"</span> <span class="ot">=</span> <span class="st">"pink"</span>, <span class="st">"man"</span> <span class="ot">=</span> <span class="st">"skyblue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="report_files/figure-html/older-gender-point-1.png" class="img-fluid" width="672"></p>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>onlygaps_hetero <span class="ot">&lt;-</span> Agegaps_hetero <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age_difference <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">older_partner =</span> <span class="fu">if_else</span>(actor_1_age <span class="sc">&gt;</span> actor_2_age <span class="sc">&amp;</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                                   character_1_gender <span class="sc">==</span> <span class="st">"man"</span>, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Male"</span>, <span class="st">"Female"</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>onlygaps_hetero <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> release_year, <span class="at">y =</span> age_difference, <span class="at">color =</span> older_partner)) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"#740C9A"</span>) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Male"</span> <span class="ot">=</span> <span class="st">"#21B0FF"</span>, <span class="st">"Female"</span> <span class="ot">=</span> <span class="st">"#FF218C"</span>)) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Age Gaps in Hollywood Films Over the Years"</span>, </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Movie Release Year"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Age Gap In Years"</span>,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Older Partner Gender"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/agegap-hetero-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The scatter plot above shows every movie observation over time where the couple has an age gap of atleast one year, the x-axis plotting the year the film was released and the y-axis plotting the age gap in years. Each point is shaded either pink, if the older partner was female, or blue, if the older partner was male. The graph shows that the older partner in Hollywood movie relationships is disproportionately male, and that in cases where the older partner is female, the age gap tends to be on the smaller side. In addition, the three best fit lines, purple representing all couples regardless of the gender of the older partner, all show that over time the size of these age gaps has decreased.</p>
+</section>
+<section id="same-sex-couples" class="level4">
+<h4 class="anchored" data-anchor-id="same-sex-couples">Same-Sex Couples</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|label: filter-samesex</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Agegaps_samesex <span class="ot">&lt;-</span> Agegaps <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(character_1_gender <span class="sc">==</span> character_2_gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>AgeGaps_updated <span class="ot">&lt;-</span> AgeGaps_updated <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_gap_range =</span> <span class="fu">if_else</span>(age_difference <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> age_difference <span class="sc">&lt;=</span> <span class="dv">5</span>, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"0-5 years"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(age_difference <span class="sc">&gt;=</span> <span class="dv">6</span> <span class="sc">&amp;</span> age_difference <span class="sc">&lt;=</span> <span class="dv">10</span>, </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"6-10 years"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(age_difference <span class="sc">&gt;=</span> <span class="dv">11</span> <span class="sc">&amp;</span> age_difference <span class="sc">&lt;=</span> <span class="dv">15</span>, </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"11-15 years"</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(age_difference <span class="sc">&gt;=</span> <span class="dv">16</span> <span class="sc">&amp;</span> age_difference <span class="sc">&lt;=</span> <span class="dv">20</span>, </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"16-20 years"</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(age_difference <span class="sc">&gt;=</span> <span class="dv">21</span> <span class="sc">&amp;</span> age_difference <span class="sc">&lt;=</span> <span class="dv">25</span>, </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"21-25 years"</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(age_difference <span class="sc">&gt;=</span> <span class="dv">26</span> <span class="sc">&amp;</span> age_difference <span class="sc">&lt;=</span> <span class="dv">30</span>, </span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"26-30 years"</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(age_difference <span class="sc">&gt;=</span> <span class="dv">31</span> <span class="sc">&amp;</span> age_difference <span class="sc">&lt;=</span> <span class="dv">35</span>, </span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"31-35 years"</span>,</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(age_difference <span class="sc">&gt;=</span> <span class="dv">36</span> <span class="sc">&amp;</span> age_difference <span class="sc">&lt;=</span> <span class="dv">40</span>, </span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"36-40 years"</span>,</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(age_difference <span class="sc">&gt;=</span> <span class="dv">41</span> <span class="sc">&amp;</span> age_difference <span class="sc">&lt;=</span> <span class="dv">45</span>, </span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"41-45 years"</span>,</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(age_difference <span class="sc">&gt;=</span> <span class="dv">46</span> <span class="sc">&amp;</span> age_difference <span class="sc">&lt;=</span> <span class="dv">50</span>, </span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"46-50 years"</span>, <span class="st">"51-55 years"</span>)))))))))))</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>AgeGaps_updated <span class="ot">&lt;-</span> AgeGaps_updated <span class="sc">|&gt;</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_gap_cat =</span> <span class="fu">if_else</span>(age_difference <span class="sc">&lt;=</span> <span class="dv">10</span>, </span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"small age gap"</span>,</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(age_difference <span class="sc">&gt;=</span> <span class="dv">11</span> <span class="sc">&amp;</span> age_difference <span class="sc">&lt;=</span> <span class="dv">20</span>, </span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"medium age gap"</span>, <span class="st">"large age gap"</span>)))</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>AgeGaps_updated <span class="ot">&lt;-</span> AgeGaps_updated <span class="sc">|&gt;</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decades =</span> <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1930</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">1940</span>, </span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"1930s"</span>,</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1941</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">1950</span>, </span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1940s"</span>,</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1951</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">1960</span>, </span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1950s"</span>,</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1961</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">1970</span>, </span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1960s"</span>,</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1971</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">1980</span>, </span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1970s"</span>,</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1981</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">1990</span>, </span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1980s"</span>,</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1991</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">2000</span>, </span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1990s"</span>,</span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">2001</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">2010</span>, </span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"2000s"</span>,</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">2011</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">2020</span>, </span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"2010s"</span>, <span class="st">"2020s"</span>))))))))))</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>AgeGaps_updated <span class="sc">|&gt;</span></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> decades, <span class="at">fill =</span> age_gap_cat)) <span class="sc">+</span></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>onlygaps_samesex <span class="ot">&lt;-</span> Agegaps_samesex <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age_difference <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">older_partner =</span> <span class="fu">if_else</span>(actor_1_age <span class="sc">&gt;</span> actor_2_age <span class="sc">&amp;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                                   character_1_gender <span class="sc">==</span> <span class="st">"man"</span>, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Gay"</span>, <span class="st">"Lesbian"</span>))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>onlygaps_samesex <span class="sc">|&gt;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> release_year, <span class="at">y =</span> age_difference, <span class="at">color =</span> older_partner)) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"#740C9A"</span>) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Gay"</span> <span class="ot">=</span> <span class="st">"#21B0FF"</span>, <span class="st">"Lesbian"</span> <span class="ot">=</span> <span class="st">"#FF218C"</span>)) <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Age Gaps in Hollywood Films Over the Years"</span>, </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Movie Release Year"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Age Gap In Years"</span>,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Relationship Type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/age-gap-histo-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/agegap-samesex-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p><strong>Results</strong></p>
-<p><strong>W+F</strong></p>
-<p><strong>update about section</strong></p>
-<p><strong>Respond to all issues from chosen data set</strong></p>
-<p><strong>Everyone is your group must have at least 3 commits</strong></p>
+<p>-------------</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Agegaps_updated <span class="ot">&lt;-</span> Agegaps_hetero <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_gap_cat =</span> <span class="fu">if_else</span>(age_difference <span class="sc">&lt;=</span> <span class="dv">15</span>, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Age Gap of 15 Years or Less"</span>, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Age Gap Over 15 Years"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_gap_cat =</span> <span class="fu">fct_relevel</span>(age_gap_cat, <span class="fu">c</span>(<span class="st">"Age Gap Over 15 Years"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                                                  <span class="st">"Age Gap of 15 Years or Less"</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(age_gap_cat)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>Agegaps_updated <span class="ot">&lt;-</span> Agegaps_updated <span class="sc">|&gt;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decades =</span> <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1931</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;=</span> <span class="dv">1940</span>, </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"1930s"</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1941</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;=</span> <span class="dv">1950</span>, </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1940s"</span>,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1951</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;=</span> <span class="dv">1960</span>, </span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1950s"</span>,</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1961</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;=</span> <span class="dv">1970</span>, </span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1960s"</span>,</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1971</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;=</span> <span class="dv">1980</span>, </span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1970s"</span>,</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1981</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;=</span> <span class="dv">1990</span>, </span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1980s"</span>,</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1991</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;=</span> <span class="dv">2000</span>, </span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1990s"</span>,</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">2001</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;=</span> <span class="dv">2010</span>, </span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"2000s"</span>,</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">2011</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;=</span> <span class="dv">2020</span>, </span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"2010s"</span>, <span class="st">"2020s"</span>))))))))))</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>Agegaps_updated <span class="sc">|&gt;</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> decades, <span class="at">fill =</span> age_gap_cat)) <span class="sc">+</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="st">"Age Gap Category"</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Age Gap Over 15 Years"</span> <span class="ot">=</span> <span class="st">"#EB5F5E"</span>,</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">"Age Gap of 15 Years or Less"</span> <span class="ot">=</span> <span class="st">"#BC5090"</span>)) <span class="sc">+</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"The Decrease of Age Gaps of More Than 15 Years Over Time"</span>,</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Decade of Film Release"</span>,</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Films"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/age-gap-histo-decades-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The bar chart above groups movie observations into the decade that they were released. The plot shows that as over time the proportion of films containing age gaps of over 15 years decreases. In the 1940s, over 80% of films had a large age gap of over 15 years. Now, in the 2020s around 30% of films contain a couple with an age gap of over 15 years.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Agegaps_updated <span class="ot">&lt;-</span> Agegaps_updated <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">era =</span> <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1930</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">1950</span>, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"pre-1950s"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1951</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">1975</span>, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1950 to 1975"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">if_else</span>(release_year <span class="sc">&gt;=</span> <span class="dv">1975</span> <span class="sc">&amp;</span> release_year <span class="sc">&lt;</span> <span class="dv">2000</span>, </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"1975 to 2000"</span>, <span class="st">"2000 to 2025"</span>)))) <span class="sc">|&gt;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">era =</span> <span class="fu">fct_relevel</span>(era, <span class="fu">c</span>(<span class="st">"pre-1950s"</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"1950 to 1975"</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"1975 to 2000"</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"2000 to 2025"</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(era)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>Agegaps_updated <span class="sc">|&gt;</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> era, <span class="at">fill =</span> age_gap_cat)) <span class="sc">+</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="st">"Age Gap Category"</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Age Gap Over 15 Years"</span> <span class="ot">=</span> <span class="st">"#EB5F5E"</span>,</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">"Age Gap of 15 Years or Less"</span> <span class="ot">=</span> <span class="st">"#BC5090"</span>)) <span class="sc">+</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"The Decrease of Age Gaps of More Than 15 Years Over 25 Year Periods"</span>,</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"25 Year Film Release Era"</span>,</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Films"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/age-gap-histo-25years-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The bar chart above simplifies the previous bar chart by combining decades into chunks of 25 years. The plot clearly shows that as over each 25 year period, the proportion of films containing age gaps of over 15 years decreases. From pre-1950, with over 50% of films having large age gaps of over 15 years to 2000-2025 where less than 25% of films contain a couple with an age gap of over 15 years.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<ul>
+<li>As the release dates of Hollywood films become more modern, the age difference between actors whose characters are in relationships decreases.</li>
+<li>As films become more modern, the proportion of films with age gaps of over 15 years has decreased consistently.</li>
+<li>It is significantly more common for the older partner in these couples to be male but in cases where the older partner is female, the age gap tends to be less than ten years.</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-This project was developed by **\[Team THAN\]** For [STA 199: Introduction to Data Science](https://sta199-s23-2.github.io/) at Duke University. The team is comprised of the following team members.
+This project was developed by team THAN For [STA 199: Introduction to Data Science](https://sta199-s23-2.github.io/) at Duke University. The team is comprised of the following team members.
 
 -   Harper de Andrade: Harper is a sophomore from Durham, NC majoring in Computer Science and History.
 -   Teddy Nahoum: Teddy is a freshman from Brooklyn, NY majoring in Computer Science and a minor in Finance
