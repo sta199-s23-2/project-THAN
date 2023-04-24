@@ -134,9 +134,15 @@ gap_fit <- linear_reg() |>
   set_engine("lm") |>
   fit(age_difference ~ release_year, data = agegaps_hetero)
 ```
+```{r}
+glance(gap_fit)$adj.r.squared
+gap_fit
+```
+$\widehat{Age Difference} = 231.0808 - 0.1103 * release\_year$
 
+The scatter plot above shows every movie observation over time where the couple has an age gap of at least one year, the x-axis plotting the year the film was released and the y-axis plotting the age gap in years. Each point is shaded either pink, if the older partner was female, or blue, if the older partner was male. The graph shows that the older partner in Hollywood movie relationships is disproportionately male, and that in cases where the older partner is female, the age gap tends to be on the smaller side. In addition, the three best fit lines, purple representing all couples regardless of the gender of the older partner, all show that over time the size of these age gaps has decreased.
 
-The scatter plot above shows every movie observation over time where the couple has an age gap of atleast one year, the x-axis plotting the year the film was released and the y-axis plotting the age gap in years. Each point is shaded either pink, if the older partner was female, or blue, if the older partner was male. The graph shows that the older partner in Hollywood movie relationships is disproportionately male, and that in cases where the older partner is female, the age gap tends to be on the smaller side. In addition, the three best fit lines, purple representing all couples regardless of the gender of the older partner, all show that over time the size of these age gaps has decreased.
+Based on our r-squared and interaction model with the release year explains roughly 4.5% variation of what the age gap was.
 
 
 ```{r}
