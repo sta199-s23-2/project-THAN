@@ -85,6 +85,8 @@ onlygaps_hetero <- Agegaps_hetero |>
                                    character_1_gender == "man", 
                                  "Male", "Female"))
 
+onlygaps_hetero$older_partner <- as.factor(onlygaps_hetero$older_partner)    
+
 onlygaps_hetero |>
   ggplot(aes(x = release_year, y = age_difference, color = older_partner)) +
   geom_point(alpha = .5) +
