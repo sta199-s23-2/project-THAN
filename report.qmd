@@ -29,6 +29,7 @@ We plan to answer our research question by filtering out the data set so that th
 #| label: load-data-3
 
 library(tidyverse)
+library(tidymodels)
 Agegaps <- read.csv(file = 'data/age_gaps.csv')
 glimpse(Agegaps)
 
@@ -62,7 +63,7 @@ We predict that overtime the age gaps between couples will lessen due to the cri
 
 Since same-sex couples have only begun to be shown in film in the last couple decades, we plan to filter the data set so that it only contains information about movies with heterosexual couples.
 
-We will then plot the age difference in movies over time via a scatter-plot with all of the movies. We can then draw a best fit line to see the trend of age-gaps as time has elapsed. We will also color the age differences based on whether the man or woman in the relationship was older. These visualizations are below in results to give an idea of how this would all work out.
+We will then plot the age difference in movies over time via a scatter-plot with all of the movies. We can then draw a best fit line to see the trend of age-gaps as time has elapsed. We will also color the age differences based on whether the man or woman in the relationship was older. These visualizations are below in results to give an idea of how this would all work out. We can find the r-squared and p-values of these models to show their strength.
 
 # Results
 
@@ -95,6 +96,17 @@ onlygaps_hetero |>
        y = "Age Gap In Years",
        color = "Older Partner Gender")
 ```
+
+```{r}
+#| label: rsquaredhetero
+onlygapsheteroR <- linear_reg() |>
+set_engine("lm") |>
+  fit(release_year ~ age_difference, data = onlygaps_hetero)
+```
+```{r}
+glance(onlygapsheteroR)$adj.r.squared
+```
+
 
 The scatter plot above shows every movie observation over time where the couple has an age gap of atleast one year, the x-axis plotting the year the film was released and the y-axis plotting the age gap in years. Each point is shaded either pink, if the older partner was female, or blue, if the older partner was male. The graph shows that the older partner in Hollywood movie relationships is disproportionately male, and that in cases where the older partner is female, the age gap tends to be on the smaller side. In addition, the three best fit lines, purple representing all couples regardless of the gender of the older partner, all show that over time the size of these age gaps has decreased.
 
