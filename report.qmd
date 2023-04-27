@@ -208,9 +208,26 @@ agegaps_hetero |>
        y = "Proportion of Films")
 ```
 
-The bar chart above groups movie observations into the era that they were released, as was done in the section above utilizing confidence intervals. The plot shows that as over time the proportion of films containing age gaps of over 15 years decreases.
+The bar chart above groups movie observations into the era that they were released. The plot shows that as over time the proportion of films containing age gaps of over 15 years decreases.
 
 The plot visualizes that as over each 25 year period, the proportion of films containing age gaps of over 15 years decreases. From pre-1950, with over 50% of films having large age gaps of over 15 years to 2000-2025 where less than 25% of films contain a couple with an age gap of over 15 years.
+
+```{r}
+act1_count <- agegaps |>
+  group_by(actor_1_name) |>
+  summarise(count = n())
+
+act1_count <- act1_count |>
+  rename("actor" = "actor_1_name")
+
+act2_count <- agegaps |>
+  group_by(actor_2_name) |>
+  summarise(count = n())
+
+act2_count <- act2_count |>
+  rename("actor" = "actor_2_name")
+```
+
 
 ```{r}
 #| label: agegap-directors
@@ -232,7 +249,7 @@ The box plot above visualizes the mean age difference in films by the five direc
 
 ## Methodology
 
-**We predict that overtime the mean age gap between couples will lessen due to the criticism of these age gaps within the film industry and that overtime the proportion of films with large age gaps will also decrease.**
+**We predict that overtime the mean age gap between couples will lessen due to the criticism of these age gaps within the film industry**
 
 Since same-sex couples have only begun to be shown in film in the last couple decades, we plan to filter the data set so that it only contains information about movies with heterosexual couples. We will briefly analyze data for same-sex couples towards the end of this report.
 
