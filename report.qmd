@@ -192,7 +192,7 @@ The scatter plot above visualizes the age difference between actors in movie rel
 
 From the plot and summary statistics, we observe that in cases where an age gap is present, the older partner tends to be male (215 observations where the older partner was female, 917 where the older partner was male.) And in cases where the older partner is female, the age difference tends to be smaller than the age difference for couples where the older partner is male (mean of 4.73 years compared to 11.7 years respectively.)
 
-Additionally, the majority of the observations appear in the last 40 years and there are not many observations from the 1930s and 1940s because the creation of Hollywood movies was just beginning. 
+Additionally, the majority of the observations appear in the last 40 years and there are not many observations from the 1930s and 1940s because the creation of Hollywood movies was just beginning.
 
 ```{r}
 #| label: gap-size-decades
@@ -209,7 +209,7 @@ agegaps_hetero |>
 
 The bar chart above groups movie observations into the decade that they were released. The plot shows that the proportion of films containing age gaps of over 15 years decreases over time.
 
-In the 1940s, over 80% of films had a large age gap of over 15 years. This proportion could be attributed to World War II, which resulted in younger men enlisting in the military rather than staring in Hollywood films. 
+In the 1940s, over 80% of films had a large age gap of over 15 years. This proportion could be attributed to World War II, which resulted in younger men enlisting in the military rather than staring in Hollywood films.
 
 ```{r}
 #| label: agegap-directors
@@ -218,15 +218,23 @@ direct_mean <- agegaps_hetero |>
   summarise(mean_age = mean(age_difference)) |>
   as.numeric()
 
-agegaps_hetero |>
+agegaps_directors <- agegaps_hetero |>
   filter(grepl(c("Woody Allen|John Glen|Martin Scorsese|Mike Newell|Steven Spielberg"), director)) |>
+  mutate(director = fct_relevel(director, 
+                                   c("Woody Allen",
+                                     "John Glen",
+                                     "Martin Scorsese",
+                                     "Mike Newell",
+                                     "Steven Spielberg")))
+
+agegaps_directors |>
   ggplot(aes(x = director, 
              y = age_difference, fill = director)) +
   geom_boxplot() +
   scale_fill_brewer(palette="Spectral") +
   geom_hline(yintercept = direct_mean, col="purple")
 ```
-  
+
 The box plot above visualizes the mean age difference in films by the five directors most represented in *Hollywood Age Gaps*. The plot shows that some directors, like Woody Allen and John Glen, when compared to the mean age difference of heterosexual couples in the dataset ($\mu = 10.4$) tend to produce movies with a larger than average age gap; whereas Mike Newell's movies contain below average sized age gaps.
 
 ```{r}
@@ -251,26 +259,24 @@ onlygaps_samesex |>
        color = "Relationship Type")
 ```
 
-Unlike the data on heterosexual couples, overtime the age gaps shown in films depicting same sex couples has increased.
+Unlike the data on heterosexual couples, overtime the age gaps shown in films depicting same sex couples has increased. However, the dataset only contains 23 observations regarding same sex couples, the first of which only appeared in 1997 so it is difficult to determine any true trend.
 
 ## Methodology
 
 Since same-sex couples have only begun to be shown in film in the last couple decades, we will filter the data set so that it only contains information about movies with heterosexual couples.
 
 ### Prediction 1:
+
 **We predict that overtime the mean age gap between couples has decreased and that the proportion of movies with large age gaps today is less that it was in the past.**
 
 We believe this change could be attributed to criticism within the film industry
 
-1. We will look at individual 25 year eras of film production, calculating the true mean age gap found in films produced during the years pre-1950, 1950-1975, 1975-2000, and post-2000. By comparing the confidence intervals produced either by bootstrapping or CLT (based on whether data fits CLT requirements), we can find a better understanding of how age gaps changed between each era.
+We will look at individual 25 year eras of film production, calculating the true mean age gap found in films produced during the years pre-1950, 1950-1975, 1975-2000, and post-2000. By comparing the confidence intervals produced either by bootstrapping or CLT (based on whether data fits CLT requirements), we can find a better understanding of how age gaps changed between each era.
 
-2. We will also fit a linear regression model to the data, to see how well the year a film was released can predict the age gap found in the film. We will look at the r-squared of this model to show its strength and analyze the results significance in regards to our hypothesis that as the year becomes more modern age gaps decrease.
+We will also fit a linear regression model to the data, to see how well the year a film was released, the gender of the older partner, and the director of the film can predict the age gap found in the film. We will look at the r-squared of this model to show its strength and analyze the results significance in regards to our hypothesis that as the year becomes more modern age gaps decrease, and to better understand what factors contribute to the age gap portrayed in a film. To test the theory that director could play a role in the age gaps portrayed, we will fit the model to the observations from the five most common directors in the data set.
 
-3. We will also fit a logistic regression model considering other factors that could help create a more accurate model, including the gender of the older partner, and the director of the film. To test the theory that director could play a role in the age gaps portrayed, we will fit a regression model to the observations from the five most common directors in the data set. 
+We will create a logistic regression model to understand the connection between release year and the likelyhood that a film will contain an age gap greater than 15 years. We will then create an ROC curve and look at the area under the curve to analyze the accuracy of our model.
 
-4. Further, we will preform a hypothesis test to determine whether our hypothesis that age gaps are smaller today than they were in the past is accurate, finding a p-value to assess our null hypothesis that the mean age gaps today are the same as those in the past.
-
-### Prediction 2:
 **We predict that the age difference is greater in couples where the older partner is male.**
 
 To investigate whether the age gap for couples where the older partner is male is greater than the age gap for couples where the older partner is female we will perform a hypothesis test on the difference in mean age differences.
@@ -281,7 +287,7 @@ To investigate whether the age gap for couples where the older partner is male i
 
 From the EDA scatterplot of age gaps in heterosexual couples, we observe that all three best fit lines are trending negatively, indicating a decrease in the age gaps over time. This observation will be explored further in the next section through the use of bootstrapping and CLT (based on sample size) to find the true mean of different eras in time.
 
-In order to use the Central Limit Theorem, the sample size must be greater than 30 and the data must show independence. *Hollywood Agegap* was randomly sampled, meeting the independence requirement. 
+In order to use the Central Limit Theorem, the sample size must be greater than 30 and the data must show independence. *Hollywood Agegap* was randomly sampled, meeting the independence requirement.
 
 -   Pre-1950: $n = 19 < 30$
 
@@ -291,7 +297,7 @@ In order to use the Central Limit Theorem, the sample size must be greater than 
 
 -   Post-2000: $n = 766 > 30$
 
-Based on sample size, we can use CLT for all eras besides pre-1950 films where will use bootstrapping. 
+Based on sample size, we can use CLT for all eras besides pre-1950 films where will use bootstrapping.
 
 #### pre-1950
 
@@ -389,21 +395,34 @@ confidence_intervals |>
 
 We can observe that over time, the upper bound of the interval has consistently decreased, and the lower bound (besides in the 1975-2000 era) has also decreased, indicating a decrease in the true mean of age gaps over time. This is consistent with what we observed in the scatterplot of age gaps in heterosexual movie couples.
 
-#### Linear Regression Model: Year to Age Difference
+#### Linear Regression Model: Age Difference in Relation to Release Year, Director, and the Older Partner's Gender
 
 ```{r}
 #| label: lin-reg-hetero
 gap_fit <- linear_reg() |>
   set_engine("lm") |>
-  fit(age_difference ~ release_year, data = agegaps_hetero)
+  fit(age_difference ~ release_year + director + older_partner_gender, 
+      data = agegaps_directors)
 
 glance(gap_fit)$adj.r.squared
 gap_fit
 ```
 
-$\widehat{Age Difference} = 231.0808 - 0.1103 * release\_year$
+$\widehat{Age Difference} = 269.7868-0.1302*year-2.3018*Glen-5.6559*Scorsese-10.1880*Newell-5.1004*Spielberg+10.8733*Male$
 
-Our linear regression model with release year explains roughly 4.5% variation of the variation in age gaps. This shows that there is not a direct correlation between age gap and the year a film was released but does indicate a negative correlation between age difference and year, supporting our hypothesis that the age difference between actors in movie relationships decreases as the release date becomes more modern.
+$Glen:$ {1 if director is John Glen; 0 if not}
+
+$Scorses:$ {1 if director is Martin Scorsese; 0 if not}
+
+$Newell:$ {1 if director is Mike Newell; 0 if not}
+
+$Spielberg:$ {1 if director is Steven Spielberg; 0 if not}
+
+***0 for all directors if director is Woody Allen***
+
+$Male:$ {1 if older partner is Male; 0 if Female}
+
+Our linear regression model with release year, director name, and the gender of the older partner explains roughly 31.2% of the variation in age gaps. This shows that there is not a perfect correlation between age gap and the year a film, its director, and the gender of the older partner. However it does indicate a negative correlation between age difference and year, supporting our hypothesis that the age difference between actors in movie relationships decreases as the release date becomes more modern. As well as indicating that different sized age gaps are more common for different directors.
 
 #### Logistic Regression Model: Probability of a Large Age Gap
 
@@ -411,26 +430,46 @@ Our linear regression model with release year explains roughly 4.5% variation of
 #| label: log-reg-hetero
 gap_model <- logistic_reg() |>
   set_engine("glm") |>
-  fit(age_gap_cat ~ release_year , data = agegaps_hetero, family = "binomial") 
-```
+  fit(age_gap_cat ~ release_year , data = agegaps_hetero, family = "binomial")
 
-```{r}
 agegaps_hetero <- agegaps_hetero |>
   mutate(pred_prob = predict(gap_model$fit, type = "response"))
+
 ggplot(data = agegaps_hetero) + 
   geom_point(aes(x = release_year, y = as.numeric(age_gap_cat) -1, 
                         color = age_gap_cat)) + 
   geom_line(aes(x = release_year, y = pred_prob)) + 
   labs(x = "Movie Release Year", 
-       y = "Predicted Probability Of A Small Age Gap", 
-       color = "Age Gap Category"
-       ) +
-  scale_color_viridis(discrete = TRUE)
+       y = "Predicted Probability Of A Small Age Gap") +
+  scale_color_manual("Age Gap Category", 
+                    values = c("Age Gap Over 15 Years" = "#EB5F5E",
+                               "Age Gap of 15 Years or Less" = "#BC5090"))
 ```
 
-$\widehat{Age Difference} = 231.0808 - 0.1103 * release\_year$
+$log(p/(1-p)) = -43.61794 + 0.02238 * release\_year$
 
-Our linear regression model with release year explains roughly 4.5% variation of the variation in age gaps. This shows that there is not a direct correlation between age gap and the year a film was released but does indicate a negative correlation between age difference and year, supporting our hypothesis that the age difference between actors in movie relationships decreases as the release date becomes more modern.
+Our estimated logistic regression model with release year shows that as the year becomes more modern, the odds of a film having a small age gap (as opposed to an age gap of over 15 years) become greater.
+
+```{r}
+#|label: log-ROC-AUC
+
+agegaps_hetero |>
+  roc_curve(
+    truth = age_gap_cat, 
+    pred_prob, 
+    event_level = "second" #which level is a success?
+  ) |>
+  autoplot()
+
+agegaps_hetero |>
+  roc_auc(
+    truth = age_gap_cat, 
+    pred_prob, 
+    event_level = "second" #which level is a success
+  ) 
+```
+
+The ROC curve shows that with our logistic regression model we have an AUC of 0.583 where $0.583 > 0.5$ indicates more true positives than false positives, meaning the model can do a better job predicting the age gap category than by flipping a coin (50-50).
 
 #### Hypothesis Testing for Difference in Means
 
@@ -475,5 +514,9 @@ With a $p-value < 0.001 > \alpha = 0.05$ we *decide* to reject the null hypothes
 ### Conclusion
 
 -   As the release dates of Hollywood films become more modern, the age difference between actors whose characters are in relationships has decreased.
--   As films become more modern, the proportion of films with age gaps of over 15 years has also consistently decreased.
+
+    -   The proportion of films with age gaps of over 15 years has also consistently decreased. With over 50% of age gap categories being able to be determined by the release year of a film.
+
+-   A linear additive model that predicts the age difference in relation to release year, director, and the gender of the older partner is able to explain 31.2% of observations.
+
 -   It is significantly more common for the older partner in couples with an age gap to be male.
