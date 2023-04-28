@@ -1,5 +1,5 @@
 ---
-title: "Does the age difference of actors in movies decrease as the release date becomes more modern?"
+title: "Does the age difference of actors in movies relationships decrease as the release date becomes more modern?"
 subtitle: "THAN: Report"
 format: html
 editor: visual
@@ -15,6 +15,7 @@ execute:
 
 library(tidyverse)
 library(tidymodels)
+library(ggpubr)
 agegaps <- read.csv(file = 'data/age_gaps.csv')
 
 ```
@@ -161,6 +162,7 @@ Some other things to explore could be the trends of specific actors/actresses th
 
 ```{r}
 #| label: agegap-hetero
+#| warning: false
 
 agegaps_hetero |>
   filter(age_difference != 0) |>
@@ -169,65 +171,43 @@ agegaps_hetero |>
   geom_smooth(method = lm, se = FALSE, color = "#740C9A") +
   scale_color_manual(values = c("Male" = "#21B0FF", "Female" = "#FF218C")) +
   geom_smooth(method = lm, se = FALSE) +
-  labs(title = "Age Gaps in Hollywood Films Over the Years", 
+  labs(title = "Proportion of Movies With Large Age Gaps", 
        x = "Movie Release Year",
        y = "Age Gap In Years",
-       color = "Older Partner Gender")
+       color = "Older Partner Gender") +
+  theme(legend.position = "none")
+  
+agegaps_hetero |>
+  group_by(older_partner_gender) |>
+  summarise(count = n())
+
+agegaps_hetero |>
+  group_by(older_partner_gender) |>
+  summarise(mean_gap = mean(age_difference))
 ```
 
 The scatter plot above visualizes the age difference between actors in movie relationships over time. The observations are colored based on the gender of the older partner. The purple best fit line shows the trend of age gaps regardless of gender.
 
-From the plot we observe that in cases where an age gap is present, the older partner tends to be male. And in cases where the older partner is female, the age difference tends to be smaller than the age difference for couples where the older partner is male.
+From the plot and summary statistics, we observe that in cases where an age gap is present, the older partner tends to be male (215 observations where the older partner was female, 917 where the older partner was male.) And in cases where the older partner is female, the age difference tends to be smaller than the age difference for couples where the older partner is male (mean of 4.73 years compared to 11.7 years respectively.)
+
+Additionally, the majority of the observations appear in the last 40 years and there are not many observations from the 1930s and 1940s because the creation of Hollywood movies was just beginning. 
 
 ```{r}
 #| label: gap-size-decades
 agegaps_hetero |>
   ggplot(aes(x = decades, fill = age_gap_cat)) +
   geom_bar(position = "fill", color = "black") +
-  scale_fill_manual("Age Gap Category", values = c("Age Gap Over 15 Years" = "#EB5F5E",
-                                         "Age Gap of 15 Years or Less" = "#BC5090")) +
-  labs(title = "The Decrease of Age Gaps of More Than 15 Years Over Time",
+  scale_fill_manual("Age Gap Category", 
+                    values = c("Age Gap Over 15 Years" = "#EB5F5E",
+                               "Age Gap of 15 Years or Less" = "#BC5090")) +
+  labs(title = "Propotion of Films with Large Age Gaps by Decade",
        x = "Decade of Film Release",
-       y = "Proportion of Films")
+       y = "Proportion of Films") 
 ```
 
-The bar chart above groups movie observations into the decade that they were released. The plot shows that as over time the proportion of films containing age gaps of over 15 years decreases.
+The bar chart above groups movie observations into the decade that they were released. The plot shows that the proportion of films containing age gaps of over 15 years decreases over time.
 
-In the 1940s, over 80% of films had a large age gap of over 15 years. It may be beneficial to note that World War II occurred during most of this decade. This may have caused this period of age gaps of over 15 years because the younger men were off fighting in war rather than acting. Additionally, it is important to recognize how there are not many data points for the 1930s decade as movies were just becoming more prevalent in society during this time period. Now, in the 2020s around only 30% of films contain a couple with an age gap of over 15 years.
-
-```{r}
-#| label: gap-size-era
-
-agegaps_hetero |>
-  ggplot(aes(x = era, fill = age_gap_cat)) +
-  geom_bar(position = "fill", color = "black") +
-  scale_fill_manual("Age Gap Category", values = c("Age Gap Over 15 Years" = "#EB5F5E",
-                                         "Age Gap of 15 Years or Less" = "#BC5090")) +
-  labs(title = "The Decrease of Age Gaps of More Than 15 Years Over 25 Year Periods",
-       x = "25 Year Film Release Era",
-       y = "Proportion of Films")
-```
-
-The bar chart above groups movie observations into the era that they were released. The plot shows that as over time the proportion of films containing age gaps of over 15 years decreases.
-
-The plot visualizes that as over each 25 year period, the proportion of films containing age gaps of over 15 years decreases. From pre-1950, with over 50% of films having large age gaps of over 15 years to 2000-2025 where less than 25% of films contain a couple with an age gap of over 15 years.
-
-```{r}
-act1_count <- agegaps |>
-  group_by(actor_1_name) |>
-  summarise(count = n())
-
-act1_count <- act1_count |>
-  rename("actor" = "actor_1_name")
-
-act2_count <- agegaps |>
-  group_by(actor_2_name) |>
-  summarise(count = n())
-
-act2_count <- act2_count |>
-  rename("actor" = "actor_2_name")
-```
-
+In the 1940s, over 80% of films had a large age gap of over 15 years. This proportion could be attributed to World War II, which resulted in younger men enlisting in the military rather than staring in Hollywood films. 
 
 ```{r}
 #| label: agegap-directors
@@ -245,7 +225,7 @@ agegaps_hetero |>
   geom_hline(yintercept = direct_mean, col="purple")
 ```
   
-The box plot above visualizes the mean age difference in films by the five directors most represented in *Hollywood Age Gaps*. The plot shows that some directors, like Woody Allen and John Glen, when compared to the mean age difference of heterosexual couples in the dataset ($\mu = 10.4$) tend to produce movies with a larger than average age gap; whereas others, like Martin Scorsese produce movies with around average sized age gaps, and Mike Newell's movies contain below average sized age gaps.
+The box plot above visualizes the mean age difference in films by the five directors most represented in *Hollywood Age Gaps*. The plot shows that some directors, like Woody Allen and John Glen, when compared to the mean age difference of heterosexual couples in the dataset ($\mu = 10.4$) tend to produce movies with a larger than average age gap; whereas Mike Newell's movies contain below average sized age gaps.
 
 ## Methodology
 
