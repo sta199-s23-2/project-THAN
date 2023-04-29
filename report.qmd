@@ -173,7 +173,7 @@ agegaps_hetero |>
   geom_smooth(method = lm, se = FALSE, color = "#740C9A") +
   scale_color_manual(values = c("Male" = "#21B0FF", "Female" = "#FF218C")) +
   geom_smooth(method = lm, se = FALSE) +
-  labs(title = "Proportion of Movies With Large Age Gaps", 
+  labs(title = "Romantic Age Gaps in Hollywood Films Over the Years", 
        x = "Movie Release Year",
        y = "Age Gap In Years",
        color = "Older Partner Gender") +
@@ -231,8 +231,11 @@ agegaps_directors |>
   ggplot(aes(x = director, 
              y = age_difference, fill = director)) +
   geom_boxplot() +
-  scale_fill_brewer(palette="Spectral") +
-  geom_hline(yintercept = direct_mean, col="purple")
+  scale_fill_brewer("Director Name", palette="Spectral") +
+  geom_hline(yintercept = direct_mean, col="purple") +
+  labs(x = "Film Director", y = "Age Difference", 
+       title = "Age Difference In Hollywood Films By Director")
+  
 ```
 
 The box plot above visualizes the mean age difference in films by the five directors most represented in *Hollywood Age Gaps*. The plot shows that some directors, like Woody Allen and John Glen, when compared to the mean age difference of heterosexual couples in the dataset ($\mu = 10.4$) tend to produce movies with a larger than average age gap; whereas Mike Newell's movies contain below average sized age gaps.
@@ -253,7 +256,7 @@ onlygaps_samesex |>
   geom_smooth(method = lm, se = FALSE, color = "#740C9A") +
   scale_color_manual(values = c("Gay" = "#21B0FF", "Lesbian" = "#FF218C")) +
   geom_smooth(method = lm, se = FALSE) +
-  labs(title = "Age Gaps in Hollywood Films Over the Years", 
+  labs(title = "Age Gaps in Same Sex Hollywood Film Relationships Over Time", 
        x = "Movie Release Year",
        y = "Age Gap In Years",
        color = "Relationship Type")
@@ -261,11 +264,23 @@ onlygaps_samesex |>
 
 Unlike the data on heterosexual couples, overtime the age gaps shown in films depicting same sex couples has increased. However, the dataset only contains 23 observations regarding same sex couples, the first of which only appeared in 1997 so it is difficult to determine any true trend.
 
+## Literature Review
+
+[The attached literature](https://womenandhollywood.com/study-how-much-older-are-male-leads-in-romantic-films-than-their-female-co-stars-43ddef908f19/) describes a study that was conducted to determine how much older male leads were compared to their female partners. Following the requests from regular readers of the website, the publisher decided to compile a dataset of 422 romantic films in order to answer this question. 
+
+In filtering films to include in the study, the following criteria was followed:
+
+-   the film had to have grossed 1 million dollars
+-   only heterosexual couples were evaluated (the study was focused on revealing gender inequality) 
+-   there could only be one clear main couple
+
+The ages of the actors, rather than that of their characters, were measured (on the first day of screening). This study took observations of films spanning 30 years (1984-2014), over this time period the average age gaps was approximately 4.5 years with the largest average gap being in 1984 (men were 10.4 years older) and the smallest average gap in 1988 (men were  0.6 years older). At no point in the 30 year timeframe were the average age of female leads older than male counter parts. 
+
+It is worth noting that the age gap was smaller on films directed by women during the time period (12% of all films studied). This is very similar to our study in that it focuses on bringing to light the gender inequality in the Hollywood film industry through data.
+
 ## Methodology
 
 Since same-sex couples have only begun to be shown in film in the last couple decades, we will filter the data set so that it only contains information about movies with heterosexual couples.
-
-### Prediction 1:
 
 **We predict that overtime the mean age gap between couples has decreased and that the proportion of movies with large age gaps today is less that it was in the past.**
 
@@ -473,7 +488,7 @@ The ROC curve shows that with our logistic regression model we have an AUC of 0.
 
 #### Hypothesis Testing for Difference in Means
 
-From the plot we observe that in cases where the older partner is female, the age difference tends to be less than the age difference for couples where the older partner is male. This is investigated in the following code chunk through hypothesis testing.
+From the initial scatter plot in EDA that visualizes the gender of the older partner for each observation with respect to movie release year and age difference, we observe that in cases where the older partner is female, the age difference tends to be less than the age difference for couples where the older partner is male. We will investigate this observation by performing a hypothesis test on the difference in mean age difference between couples where the older partner is male and those where the older partner is female.
 
 Null Hypothesis: the true mean age gap for couples where the older partner is male is the same as the true mean age gap for couples where the older partner is female.
 
@@ -511,7 +526,7 @@ null_dist_hetero |>
 
 With a $p-value < 0.001 > \alpha = 0.05$ we *decide* to reject the null hypothesis that the true mean age gap for couples where the older partner is male is the same as the true mean age gap for couples where the older partner is female and *conclude* that there is strong evidence to conclude the alternative hypothesis that the true mean age gap for couples where the older partner is male is greater than the true mean age gap for couples where the older partner is female.
 
-### Conclusion
+### Discussion
 
 -   As the release dates of Hollywood films become more modern, the age difference between actors whose characters are in relationships has decreased.
 
@@ -520,3 +535,12 @@ With a $p-value < 0.001 > \alpha = 0.05$ we *decide* to reject the null hypothes
 -   A linear additive model that predicts the age difference in relation to release year, director, and the gender of the older partner is able to explain 31.2% of observations.
 
 -   It is significantly more common for the older partner in couples with an age gap to be male.
+
+-   In the future we hope that more observations from earlier years as well as films including same sex couples are added to **Hollywood Agegap** so that more accurate and comprehensive data analysis can be performed.
+
+-   We would also like to look at data that includes films from other regions of the world with large film industries such as Europe or India in order be able to see if any cultural nuance can be currently or historically in the portrayal of couples.
+
+-   Additionally, in addition to accounting for the progression of time, we could pursue further research wherein we facet the data by genre in order to observe any possible disparity in couple age difference.
+
+    \
+
