@@ -425,15 +425,15 @@ glance(gap_fit)$adj.r.squared
 gap_fit
 ```
 
-$\widehat{Age Difference} = 269.7868-0.1302*year-2.3018*Glen-5.6559*Scorsese-10.1880*Newell-5.1004*Spielberg+10.8733*Male$
+$\widehat{Age Gap} = 269.7868-0.1302*year-2.3018*G-5.6559*S-10.1880*N-5.1004*S+10.8733*Male$
 
-$Glen:$ {1 if director is John Glen; 0 if not}
+$G:$ {1 if director is John Glen; 0 if not}
 
-$Scorses:$ {1 if director is Martin Scorsese; 0 if not}
+$S:$ {1 if director is Martin Scorsese; 0 if not}
 
-$Newell:$ {1 if director is Mike Newell; 0 if not}
+$N:$ {1 if director is Mike Newell; 0 if not}
 
-$Spielberg:$ {1 if director is Steven Spielberg; 0 if not}
+$S:$ {1 if director is Steven Spielberg; 0 if not}
 
 ***0 for all directors if director is Woody Allen***
 
