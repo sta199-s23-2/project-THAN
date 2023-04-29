@@ -114,7 +114,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
   <ul class="collapse">
   <li><a href="#bootstrapping-and-clt-of-mean-age-gaps" id="toc-bootstrapping-and-clt-of-mean-age-gaps" class="nav-link" data-scroll-target="#bootstrapping-and-clt-of-mean-age-gaps">Bootstrapping and CLT of Mean Age Gaps</a></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  </ul></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a>
+  <ul class="collapse">
+  <li><a href="#citations" id="toc-citations" class="nav-link" data-scroll-target="#citations">Citations</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -253,8 +256,8 @@ ul.task-list li input[type="checkbox"] {
 <li>only heterosexual couples were evaluated (the study was focused on revealing gender inequality)</li>
 <li>there could only be one clear main couple</li>
 </ul>
-<p>The ages of the actors, rather than that of their characters, were measured (on the first day of screening). This study took observations of films spanning 30 years (1984-2014), over this time period the average age gaps was approximately 4.5 years with the largest average gap being in 1984 (men were 10.4 years older) and the smallest average gap in 1988 (men were 0.6 years older). At no point in the 30 year timeframe were the average age of female leads older than male counter parts.</p>
-<p>It is worth noting that the age gap was smaller on films directed by women during the time period (12% of all films studied). This is very similar to our study in that it focuses on bringing to light the gender inequality in the Hollywood film industry through data.</p>
+<p>The ages of the actors, rather than those of their characters, were measured (ages on the first day of screening). This study took observations of films spanning 30 years (1984-2014). Over this time period, the average age gaps was approximately 4.5 years with the largest average gap being in 1984 (men were 10.4 years older on average) and the smallest average gap in 1988 (men were 0.6 years older). At no point in the 30 year time frame was the average age of female leads older than male counter parts.</p>
+<p>It is worth noting that the age gap was smaller on films directed by women during the time period (12% of all films studied). This is very similar to our study in that it focuses on bringing to light the gender inequality from the end of the 20th century to current times in the Hollywood film industry through data.</p>
 </section>
 <section id="methodology" class="level2">
 <h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
@@ -262,10 +265,10 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>We predict that overtime the mean age gap between couples has decreased and that the proportion of movies with large age gaps today is less that it was in the past.</strong></p>
 <p>We believe this change could be attributed to criticism within the film industry</p>
 <p>We will look at individual 25 year eras of film production, calculating the true mean age gap found in films produced during the years pre-1950, 1950-1975, 1975-2000, and post-2000. By comparing the confidence intervals produced either by bootstrapping or CLT (based on whether data fits CLT requirements), we can find a better understanding of how age gaps changed between each era.</p>
-<p>We will also fit a linear regression model to the data, to see how well the year a film was released, the gender of the older partner, and the director of the film can predict the age gap found in the film. We will look at the r-squared of this model to show its strength and analyze the results significance in regards to our hypothesis that as the year becomes more modern age gaps decrease, and to better understand what factors contribute to the age gap portrayed in a film. To test the theory that director could play a role in the age gaps portrayed, we will fit the model to the observations from the five most common directors in the data set.</p>
-<p>We will create a logistic regression model to understand the connection between release year and the likelyhood that a film will contain an age gap greater than 15 years. We will then create an ROC curve and look at the area under the curve to analyze the accuracy of our model.</p>
+<p>We will also fit a linear regression model to the data, to see how well the year a film was released, the gender of the older partner, and the director of the film can predict the age gap found in the film. We will look at the r-squared of this model to show its strength and analyze the results significance in regards to our hypothesis (that as the year becomes more modern age gaps decrease), and to better understand what factors contribute to the age gap portrayed in a film. To test the theory that director could play a role in the age gaps portrayed, we will fit the model to the observations from the five most common directors in the data set.</p>
+<p>We will create a logistic regression model to understand the connection between release year and the likelihood that a film will contain an age gap greater than 15 years. We will then create an ROC curve and look at the area under the curve to analyze the accuracy of our model.</p>
 <p><strong>We predict that the age difference is greater in couples where the older partner is male.</strong></p>
-<p>To investigate whether the age gap for couples where the older partner is male is greater than the age gap for couples where the older partner is female we will perform a hypothesis test on the difference in mean age differences.</p>
+<p>To investigate whether the age gap for couples where the older partner is male is greater than the age gap for couples where the older partner is female, we will perform a hypothesis test on the difference in mean age differences.</p>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
@@ -358,7 +361,7 @@ older_partner_genderMale
 <p><span class="math inline">\(Spielberg:\)</span> {1 if director is Steven Spielberg; 0 if not}</p>
 <p><strong><em>0 for all directors if director is Woody Allen</em></strong></p>
 <p><span class="math inline">\(Male:\)</span> {1 if older partner is Male; 0 if Female}</p>
-<p>Our linear regression model with release year, director name, and the gender of the older partner explains roughly 31.2% of the variation in age gaps. This shows that there is not a perfect correlation between age gap and the year a film, its director, and the gender of the older partner. However it does indicate a negative correlation between age difference and year, supporting our hypothesis that the age difference between actors in movie relationships decreases as the release date becomes more modern. As well as indicating that different sized age gaps are more common for different directors.</p>
+<p>Our linear regression model with release year, director name, and the gender of the older partner explains roughly 31.2% of the variation in age gaps. This shows that there is not a perfect correlation between age gap and the year a film was released, its director, and the gender of the older partner. However it does indicate a negative correlation between age difference and year, supporting our hypothesis that the age difference between actors in movie relationships decreases as the release date becomes more modern, as well as indicating that different sized age gaps are more common for different directors.</p>
 </section>
 <section id="logistic-regression-model-probability-of-a-large-age-gap" class="level4">
 <h4 class="anchored" data-anchor-id="logistic-regression-model-probability-of-a-large-age-gap">Logistic Regression Model: Probability of a Large Age Gap</h4>
@@ -418,8 +421,9 @@ approximation based on the number of `reps` chosen in the `generate()` step. See
 <p>With a <span class="math inline">\(p-value &lt; 0.001 &gt; \alpha = 0.05\)</span> we <em>decide</em> to reject the null hypothesis that the true mean age gap for couples where the older partner is male is the same as the true mean age gap for couples where the older partner is female and <em>conclude</em> that there is strong evidence to conclude the alternative hypothesis that the true mean age gap for couples where the older partner is male is greater than the true mean age gap for couples where the older partner is female.</p>
 </section>
 </section>
-<section id="discussion" class="level3">
-<h3 class="anchored" data-anchor-id="discussion">Discussion</h3>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
 <ul>
 <li><p>As the release dates of Hollywood films become more modern, the age difference between actors whose characters are in relationships has decreased.</p>
 <ul>
@@ -428,11 +432,13 @@ approximation based on the number of `reps` chosen in the `generate()` step. See
 <li><p>A linear additive model that predicts the age difference in relation to release year, director, and the gender of the older partner is able to explain 31.2% of observations.</p></li>
 <li><p>It is significantly more common for the older partner in couples with an age gap to be male.</p></li>
 <li><p>In the future we hope that more observations from earlier years as well as films including same sex couples are added to <strong>Hollywood Agegap</strong> so that more accurate and comprehensive data analysis can be performed.</p></li>
-<li><p>We would also like to look at data that includes films from other regions of the world with large film industries such as Europe or India in order be able to see if any cultural nuance can be currently or historically in the portrayal of couples.</p></li>
-<li><p>Additionally, in addition to accounting for the progression of time, we could pursue further research wherein we facet the data by genre in order to observe any possible disparity in couple age difference.</p>
-<p><br>
-</p></li>
+<li><p>We would also like to look at data that includes films from other regions of the world with large film industries such as Europe or India in order be able to see if any cultural nuance can be currently or historically shown in the portrayal of couples.</p></li>
+<li><p>Additionally, in addition to accounting for the progression of time, we could pursue further research wherein we facet the data by genre in order to observe any possible disparity in couple age difference.</p></li>
 </ul>
+<section id="citations" class="level3">
+<h3 class="anchored" data-anchor-id="citations">Citations</h3>
+<p>Fisher, Lynn. <em>“Hollywood Age Gap.”</em> Hollywood Age Gap, 2023. https://hollywoodagegap.com/.</p>
+<p><em>“Study: How Much Older Are Male Leads in Romantic Films than Their Female Co-Stars?”</em> Women and Hollywood , June 1, 2015. https://womenandhollywood.com/study-how-much-older-are-male-leads-in-romantic-films-than-their-female-co-stars-43ddef908f19/.</p>
 
 
 </section>
